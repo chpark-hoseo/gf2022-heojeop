@@ -15,9 +15,9 @@ int main(int argc, char* args[]){
 		//SDL 하위 시스템 초기화
 
 		//SDL_CreateWindow(창 제목, 좌표x, 좌표y, width 크기, height 크기)
-		g_pWindow = SDL_CreateWindow("Setting up SDL",
+		g_pWindow = SDL_CreateWindow("Game FrameWork",
 			SDL_WINDOWPOS_CENTERED,
-			SDL_WINDOWPOS_CENTERED,640, 480,
+			SDL_WINDOWPOS_CENTERED, 1024, 768,
 			SDL_WINDOW_SHOWN);
 		
 		// window 생성에 성공하면 랜더러 생성
