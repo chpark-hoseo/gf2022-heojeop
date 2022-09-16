@@ -20,7 +20,6 @@ int main(int argc, char* args[]){
     }else{
         return 1;
     }
-    
     while(g_bRunning){
         //render 함수 호출
         render();
@@ -42,8 +41,9 @@ bool init(const char* title, int xpos, int height, int width, int flags){
     }else{
         return false;
     }
-    // RGB 값으로 색상을 설정하는 함수 ( Red, Green, Blue, 투명도)
-    SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 0, 255);
+    // RGB 값으로 색상을 설정하는 함수 ( Red, Green, Blue, 투명도중 rand 함수를 통해 랜덤으로 교체)
+    SDL_SetRenderDrawColor(g_pRenderer, rand() % 256, rand % 256, rand() % 256, 255;);
+    SDL_Delay(1000)
     
     return true;
 }
