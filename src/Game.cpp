@@ -2,15 +2,18 @@
 #include "Game.h"
 
 bool Game::init(const char* title, int xpos, int ypos, int height, int width, int flags) {
-
-	if (SDL_Init(SDL_INIT_EVERYTHING) == 0){
+	
+	
+	if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
 		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
 		if (m_pWindow != 0) {
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 
 			if (m_pRenderer != 0) {
-				SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
+				SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
+
 			}
+
 			else {
 				return false; //랜더러 생성 실패
 			}
@@ -23,6 +26,24 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	else {
 		return false; //SDL 초기화 실패
 	}
+	
+	//surface 생성
+	SDL_Surface* pTempSurface = SDL_LoadBMP("assets/rider.bmp");
+	//생성한 surface 를 이용하여 Texture 생성
+	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
+	//사용한 surface 삭제
+	SDL_FreeSurface(pTempSurface);
+	//Load 한 Texture 의 크기를 가져옴
+	SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
+	//X 위치와 Y 위치를 설정
+	m_destinationRectangle.x = m_sourceRectangle.x = 0;
+	m_destinationRectangle.y = m_sourceRectangle.y = 0;
+	//Texture 의 크기를 동일하게 설정
+	m_destinationRectangle.w = m_sourceRectangle.w;
+	m_destinationRectangle.h = m_sourceRectangle.h; 
+	
+	printf("SDL_Init failed: %s\n", SDL_GetError());
+
 	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
 	return true;
 }
@@ -33,7 +54,17 @@ void Game::update() {
 //버퍼
 void Game::render() {
 	SDL_RenderClear(m_pRenderer); //백버퍼 그리기
+
+	//백버퍼와 메인버퍼 사이에 랜더링 할 함수를 삽입 ) ****************** 중요 ********************
+
+	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
+
+	
+	/// ///////////////////////////////////////////////////////////////////////////////////////
+
 	SDL_RenderPresent(m_pRenderer); // 메인버퍼 출력
+
+	
 }
 //running 함수가 실행되면 현재 m_bRunning의 상태 리턴
 bool Game::running() {

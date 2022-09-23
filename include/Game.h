@@ -1,4 +1,4 @@
-//Çì´õÆÄÀÏ (Å¬·¡½ºÀÇ ¼±¾ğÀ» ´ã´ç)
+ï»¿//í—¤ë”íŒŒì¼ (í´ë˜ìŠ¤ì˜ ì„ ì–¸ì„ ë‹´ë‹¹)
 #include "SDL.h"
 
 class Game {
@@ -14,7 +14,15 @@ public:
 	void clean();
 
 private:
-	SDL_Window* m_pWindow;
+	SDL_Texture* m_pTexture; 
+	SDL_Rect m_sourceRectangle; // ì›ë³¸ ì‚¬ê°í˜•
+	SDL_Rect m_destinationRectangle; // ëŒ€ìƒ ì‚¬ê°í˜•
+ 	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
 	bool m_bRunning;
 };
+
+/*typedef struct SDL_Rect {
+	int x, y;
+	int w, h;
+} SDL_Rect; */

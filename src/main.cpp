@@ -21,6 +21,9 @@ int main(int argc, char* argv[]){
 	}
 	g_game->clean(); //정상 종료
 
+
+	
+
 	return 0;
 
 }
