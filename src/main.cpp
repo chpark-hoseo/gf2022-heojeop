@@ -1,4 +1,6 @@
 // 20191246 장태훈 GameFrameWork SDL 
+#ifndef __Game__
+#define __Game__
 
 #include "Game.h"
 
@@ -22,6 +24,7 @@ int main(int argc, char* argv[]){
 	return 0;
 
 }
+#endif
 
 
 

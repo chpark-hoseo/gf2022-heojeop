@@ -1,4 +1,4 @@
-//Game.h¿¡¼­ ¼±¾ğÇÑ Å¬·¡½ºÀÇ Á¤ÀÇ(±â´É)
+ï»¿//Game.hì—ì„œ ì„ ì–¸í•œ í´ë˜ìŠ¤ì˜ ì •ì˜(ê¸°ëŠ¥)
 #include "Game.h"
 
 bool Game::init(const char* title, int xpos, int ypos, int height, int width, int flags) {
@@ -12,47 +12,48 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 				SDL_SetRenderDrawColor(m_pRenderer, 255, 255, 255, 255);
 			}
 			else {
-				return false; //·£´õ·¯ »ı¼º ½ÇÆĞ
+				return false; //ëœë”ëŸ¬ ìƒì„± ì‹¤íŒ¨
 			}
 
 		}
 		else {
-			return false; //Window »ı¼º ½ÇÆĞ
+			return false; //Window ìƒì„± ì‹¤íŒ¨
 		}
 	}
 	else {
-		return false; //SDL ÃÊ±âÈ­ ½ÇÆĞ
+		return false; //SDL ì´ˆê¸°í™” ì‹¤íŒ¨
 	}
-	m_bRunning = true; //true ·Î º¯°æ ÈÄ Á¤»ó ½ÇÇàÁß ÀüÈ¯
+	m_bRunning = true; //true ë¡œ ë³€ê²½ í›„ ì •ìƒ ì‹¤í–‰ì¤‘ ì „í™˜
 	return true;
 }
 
 void Game::update() {
 
 }
-//¹öÆÛ
+//ë²„í¼
 void Game::render() {
-	SDL_RenderClear(m_pRenderer); //¹é¹öÆÛ ±×¸®±â
-	SDL_RenderPresent(m_pRenderer); // ¸ŞÀÎ¹öÆÛ Ãâ·Â
+	SDL_RenderClear(m_pRenderer); //ë°±ë²„í¼ ê·¸ë¦¬ê¸°
+	SDL_RenderPresent(m_pRenderer); // ë©”ì¸ë²„í¼ ì¶œë ¥
 }
-//running ÇÔ¼ö°¡ ½ÇÇàµÇ¸é ÇöÀç m_bRunningÀÇ »óÅÂ ¸®ÅÏ
+//running í•¨ìˆ˜ê°€ ì‹¤í–‰ë˜ë©´ í˜„ì¬ m_bRunningì˜ ìƒíƒœ ë¦¬í„´
 bool Game::running() {
 	return m_bRunning;
 }
-//Á¤»óÀûÀÎ ÇÁ·Î±×·¥ Á¾·á¸¦ À§ÇØ Á¾·á¹öÆ° ±¸Çö
+//ì •ìƒì ì¸ í”„ë¡œê·¸ë¨ ì¢…ë£Œë¥¼ ìœ„í•´ ì¢…ë£Œë²„íŠ¼ êµ¬í˜„
 void Game::handleEvents() {
 	SDL_Event event;
-	if (SDL_PollEvent(&event)) {
+	//while ë¬¸ì„ ì´ìš©í•˜ì—¬ ì´ë²¤íŠ¸ë¥¼ ê²€ì‚¬
+	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_QUIT:
-			m_bRunning = false; // false ÀüÈ¯À» ÅëÇØ ÇÁ·Î±×·¥ Á¾·á
+			m_bRunning = false; // false ì „í™˜ì„ í†µí•´ í”„ë¡œê·¸ë¨ ì¢…ë£Œ
 			break;
 		default:
 			break;
 		}
 	}
 }
-//window¿Í render »èÁ¦ÈÄ ¿ÏÀüÁ¾·á
+//windowì™€ render ì‚­ì œí›„ ì™„ì „ì¢…ë£Œ
 void Game::clean() {
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
