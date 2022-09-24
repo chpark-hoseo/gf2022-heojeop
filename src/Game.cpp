@@ -26,6 +26,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	else {
 		return false; //SDL 초기화 실패
 	}
+
 	
 	//surface 생성
 	SDL_Surface* pTempSurface = SDL_LoadBMP("assets/rider.bmp");
@@ -86,6 +87,7 @@ void Game::handleEvents() {
 }
 //window와 render 삭제후 완전종료
 void Game::clean() {
+	SDL_DestroyTexture(m_pTexture);
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_Quit();
