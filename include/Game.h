@@ -6,15 +6,18 @@ public:
 	Game(){}
 	~Game(){}
 
+	int i = 0;
 	bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
 	void render();
 	void update();
 	bool running();
 	void handleEvents();
 	void clean();
+	void moveTexture();
 
 private:
 	SDL_Texture* m_pTexture; 
+	SDL_Texture* m_pBTexture;
 	SDL_Rect m_sourceRectangle; // 원본 사각형
 	SDL_Rect m_destinationRectangle; // 대상 사각형
  	SDL_Window* m_pWindow;
