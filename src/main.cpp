@@ -11,7 +11,7 @@ int main(int argc, char* argv[]){
 	g_game = new Game();
 
 	//init함수(window제목, x위치, y위치, 좌표에서 창의 너비, 좌표에서 창의 높이,  Flags)
-	g_game->init("Game Class", 100, 100, 640, 480, 0);
+	g_game->init("Game Class", 640, 480, 640, 480, 0);
 	
 	
 	//while문을 통해 함수들 실행

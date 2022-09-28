@@ -42,7 +42,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 	SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
 
-	//원본 상자의 위치 설정
+	//원본 상자와 대상상자 생성 위치 설정
 	m_destinationRectangle.x = m_sourceRectangle.x = 0;
 	m_destinationRectangle.y = m_sourceRectangle.y = 0;
 
@@ -54,6 +54,33 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 	m_destinationRectangle.w = m_sourceRectangle.w;
 	m_destinationRectangle.h = m_sourceRectangle.h;
+
+	// =========== 과제 1 ============
+	// 대상 상자의 생성 위치 변경
+
+	/*
+	m_destinationRectangle.y = 50;
+	m_destinationRectangle.x = 50;
+	*/
+
+	
+	/* =========== 과제 2 ============
+	m_destinationRectangle.x =  m_sourceRectangle.x = 50;
+	m_destinationRectangle.y =  m_sourceRectangle.y = 50;
+
+	m_destinationRectangle.y = 50;
+	m_destinationRectangle.x = 50; 
+	
+	*/
+
+	/* =========== 과제 3 ============ 
+	
+	m_sourceRectangle.w = width; 
+	m_sourceRectangle.h = height;
+
+	*/
+
+
 
 	printf("SDL_Init failed: %s\n", SDL_GetError());
 
