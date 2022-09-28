@@ -30,24 +30,30 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 	//surface 생성
 	SDL_Surface* pTempSurface = SDL_LoadBMP("assets/rider.bmp");
-	//SDL_Surface* pTempBSurface = IMG_Load("assetes/123.jpg");
 
 	//생성한 surface 를 이용하여 Texture 생성
 	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
+
 	//사용한 surface 삭제
+
 	SDL_FreeSurface(pTempSurface);
-	//SDL_FreeSurface(pTempBSurface);
+
 	//Load 한 Texture 의 크기를 가져옴
+
 	SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
-	//원본 상자의 크기 설정
-	m_sourceRectangle.x = 0;
-	m_sourceRectangle.y = 0;
+
+	//원본 상자의 위치 설정
+	m_destinationRectangle.x = m_sourceRectangle.x = 0;
+	m_destinationRectangle.y = m_sourceRectangle.y = 0;
+
 	//출력 범위를 동일하게 설정
+	
+	//=========추가실습============//
+	m_sourceRectangle.w = 50; 
+	m_sourceRectangle.h = 50;
+
 	m_destinationRectangle.w = m_sourceRectangle.w;
 	m_destinationRectangle.h = m_sourceRectangle.h;
-	//출력 크기 설정
-	m_destinationRectangle.w = 123;
-	m_destinationRectangle.h = 87;
 
 	printf("SDL_Init failed: %s\n", SDL_GetError());
 
