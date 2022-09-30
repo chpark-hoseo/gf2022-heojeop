@@ -29,7 +29,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 
 	//surface 생성
-	SDL_Surface* pTempSurface = SDL_LoadBMP("assets/rider.bmp");
+	SDL_Surface* pTempSurface = SDL_LoadBMP("assets/animate.bmp");
 
 	//생성한 surface 를 이용하여 Texture 생성
 	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
@@ -39,8 +39,10 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	SDL_FreeSurface(pTempSurface);
 
 	//Load 한 Texture 의 크기를 가져옴
+	m_sourceRectangle.w = 128;
+	m_sourceRectangle.h = 82;
 
-	SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
+	//SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
 
 	//원본 상자와 대상상자 생성 위치 설정
 	m_destinationRectangle.x = m_sourceRectangle.x = 0;
@@ -48,38 +50,8 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 	//출력 범위를 동일하게 설정
 	
-	//=========추가실습============//
-	m_sourceRectangle.w = 50; 
-	m_sourceRectangle.h = 50;
-
 	m_destinationRectangle.w = m_sourceRectangle.w;
 	m_destinationRectangle.h = m_sourceRectangle.h;
-
-	// =========== 과제 1 ============
-	// 대상 상자의 생성 위치 변경
-
-	/*
-	m_destinationRectangle.y = 50;
-	m_destinationRectangle.x = 50;
-	*/
-
-	
-	/* =========== 과제 2 ============
-	m_destinationRectangle.x =  m_sourceRectangle.x = 50;
-	m_destinationRectangle.y =  m_sourceRectangle.y = 50;
-
-	m_destinationRectangle.y = 50;
-	m_destinationRectangle.x = 50; 
-	
-	*/
-
-	/* =========== 과제 3 ============ 
-	
-	m_sourceRectangle.w = width; 
-	m_sourceRectangle.h = height;
-
-	*/
-
 
 
 	printf("SDL_Init failed: %s\n", SDL_GetError());
@@ -91,11 +63,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 
 void Game::update() {
-	//Texture 움직이기 (미완성)
-	/*i++;
-	m_destinationRectangle.x = i;
-	if (i > m_destinationRectangle.w){
-	}*/
+
 }
 
 
