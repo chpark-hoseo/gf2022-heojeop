@@ -58,10 +58,10 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	// =========== 과제 1 ============
 	// 대상 상자의 생성 위치 변경
 
-	/*
+	
 	m_destinationRectangle.y = 50;
 	m_destinationRectangle.x = 50;
-	*/
+	
 
 	
 	/* =========== 과제 2 ============
