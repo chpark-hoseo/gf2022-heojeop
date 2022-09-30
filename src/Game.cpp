@@ -30,19 +30,19 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 	//surface 생성
 	SDL_Surface* pTempSurface = SDL_LoadBMP("assets/rider.bmp");
-	SDL_Surface* pTempBSurface = IMG_Load("assetes/123.jpg");
+
 
 	//생성한 surface 를 이용하여 Texture 생성
 	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-	m_pBTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempBSurface);
+	//m_pBTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempBSurface);
 	//사용한 surface 삭제
 	SDL_FreeSurface(pTempSurface);
-	SDL_FreeSurface(pTempBSurface);
+	//SDL_FreeSurface(pTempBSurface);
 	//Load 한 Texture 의 크기를 가져옴
 	SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
-	SDL_QueryTexture(m_pBTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
+	//SDL_QueryTexture(m_pBTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
 	//X 위치와 Y 위치를 설정
-	m_destinationRectangle.x = 0; // m_sourceRectangle.x = 0;
+	m_destinationRectangle.x = m_sourceRectangle.x = 0;
 	m_destinationRectangle.y = m_sourceRectangle.y = 0;
 	//Texture 의 크기를 동일하게 설정
 	m_destinationRectangle.w = m_sourceRectangle.w;
@@ -58,8 +58,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 void Game::update() {
 	//Texture 움직이기 (미완성)
-	i++;	
-	m_destinationRectangle.x = i;
+
 }
 
 
