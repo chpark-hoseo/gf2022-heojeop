@@ -13,7 +13,6 @@ public:
 	bool running();
 	void handleEvents();
 	void clean();
-	void moveTexture();
 
 private:
 	SDL_Texture* m_pTexture; 

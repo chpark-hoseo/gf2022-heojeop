@@ -49,14 +49,14 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	//출력 범위를 동일하게 설정
 	
 	//=========추가실습============//
-	/*
-	m_sourceRectangle.w = 50;
-	m_sourceRectangle.h = 50;
+	
+	//m_sourceRectangle.w = 50;
+	//m_sourceRectangle.h = 50;
 
 	m_destinationRectangle.w = m_sourceRectangle.w;
 	m_destinationRectangle.h = m_sourceRectangle.h;
 
-	*/
+	
 
 	// =========== 과제 1 ============
 	// 대상 상자의 생성 위치 변경
@@ -78,10 +78,10 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 	//=========== 과제 3 ============ 
 	
-	
+	/*
 	m_destinationRectangle.w = m_sourceRectangle.w = width;
 	m_destinationRectangle.h = m_sourceRectangle.h = height;
-
+	*/
 	
 
 
@@ -95,11 +95,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 
 void Game::update() {
-	//Texture 움직이기 (미완성)
-	/*i++;
-	m_destinationRectangle.x = i;
-	if (i > m_destinationRectangle.w){
-	}*/
+	
 }
 
 
@@ -109,8 +105,12 @@ void Game::render() {
 	//백버퍼와 메인버퍼 사이에 랜더링 할 함수를 삽입 ) ****************** 중요 ********************
 
 	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
+	SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
+	SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 60, 0, SDL_FLIP_HORIZONTAL);
+	SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 120, 0, SDL_FLIP_HORIZONTAL);
+	SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 180, 0, SDL_FLIP_HORIZONTAL);
 
-	
+
 	/// ///////////////////////////////////////////////////////////////////////////////////////
 
 	SDL_RenderPresent(m_pRenderer); // 메인버퍼 출력
