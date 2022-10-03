@@ -32,16 +32,16 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	//surface 생성
 	
 	SDL_Surface* pTempSurface = IMG_Load("assets/animate-alpha.png");
+	SDL_Surface* pTempbSurface = IMG_Load("assets/123.jpg");
 
-	if (pTempSurface == NULL) {
-		std::cout << "Not Load IMG" << IMG_GetError();
+	if (pTempSurface && pTempbSurface == NULL) {
+		std::cout << IMG_GetError();
 
 		return EXIT_FAILURE;
 	}
 	
 	//생성한 surface 를 이용하여 Texture 생성
 	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-	
 
 	//사용한 surface 삭제
 	
@@ -49,19 +49,26 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	//SDL_FreeSurface(pTempSurfacepepe);
 
 	//Load 한 Texture 의 크기를 가져옴
-	m_sourceRectangle.w = 128;
-	m_sourceRectangle.h = 82;
 
+	m_sourceRectangle.w = m_sourceRectangle2.w = 128;
+	m_sourceRectangle.h = m_sourceRectangle2.h = 82;
 
 
 	//SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
 
 	//원본 상자와 대상상자 생성 위치 설정
-	m_destinationRectangle.x = m_sourceRectangle.x = 0;
-	m_destinationRectangle.y = m_sourceRectangle.y = 0;
+	m_destinationRectangle.x = 110;
+	m_destinationRectangle.y = 150;
+	m_destinationRectangle2.x = 0;
+	m_destinationRectangle2.y = 0;
+
+
 
 	//출력 범위를 동일하게 설정
 	
+	m_destinationRectangle2.w = m_sourceRectangle2.w ;
+	m_destinationRectangle2.h = m_sourceRectangle2.h ;
+
 	m_destinationRectangle.w = m_sourceRectangle.w ;
 	m_destinationRectangle.h = m_sourceRectangle.h ;
 
@@ -77,7 +84,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 void Game::update() {
 
 	m_sourceRectangle.x = 128 * ((SDL_GetTicks() / 100) % 6);
-
+	m_sourceRectangle2.x = 128 * ((SDL_GetTicks() / 50) % 6);
 }
 
 
@@ -85,10 +92,8 @@ void Game::render() {
 	SDL_RenderClear(m_pRenderer); //백버퍼 그리기
 
 	//백버퍼와 메인버퍼 사이에 랜더링 할 함수를 삽입 ) ****************** 중요 ********************
-
 	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
-	//SDL_RenderCopy(m_pRenderer, pepe, &m_sourceRectangle, &m_destinationRectangle);
-
+	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle2, &m_destinationRectangle2);
 	
 	/// ///////////////////////////////////////////////////////////////////////////////////////
 
