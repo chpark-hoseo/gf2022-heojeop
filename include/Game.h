@@ -17,9 +17,9 @@ public:
 
 private:
 	SDL_Texture* m_pTexture; 
-	SDL_Texture* m_pBTexture;
-	SDL_Rect m_sourceRectangle; // 원본 사각형
-	SDL_Rect m_destinationRectangle; // 대상 사각형
+	SDL_Texture* pepe;
+	SDL_Rect m_sourceRectangle, m_pepesource;// 원본 사각형
+	SDL_Rect m_destinationRectangle, m_pepedestination; // 대상 사각형
  	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
 	bool m_bRunning;
