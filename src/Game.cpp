@@ -1,6 +1,7 @@
 ﻿//Game.h에서 선언한 클래스의 정의(기능)
 #include "Game.h"
 
+
 bool Game::init(const char* title, int xpos, int ypos, int height, int width, int flags) {
 
 
@@ -30,7 +31,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 	//surface 생성
 	
-	SDL_Surface* pTempSurface = IMG_Load("assets/animate.png");
+	SDL_Surface* pTempSurface = IMG_Load("assets/animate-alpha.png");
 
 	if (pTempSurface == NULL) {
 		std::cout << "Not Load IMG" << IMG_GetError();
