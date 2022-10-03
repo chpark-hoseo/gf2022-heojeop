@@ -30,8 +30,8 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 
 	//surface 생성
-	
-	SDL_Surface* pTempSurface = IMG_Load("assets/animate-alpha.png");
+
+	SDL_Surface* pTempSurface = IMG_Load("assets/pepe.png");
 	SDL_Surface* pTempbSurface = IMG_Load("assets/123.jpg");
 
 	if (pTempSurface && pTempbSurface == NULL) {
@@ -39,38 +39,41 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 		return EXIT_FAILURE;
 	}
-	
+
 	//생성한 surface 를 이용하여 Texture 생성
 	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
+	m_Background = SDL_CreateTextureFromSurface(m_pRenderer, pTempbSurface);
 
 	//사용한 surface 삭제
-	
-	SDL_FreeSurface(pTempSurface);	
+
+	SDL_FreeSurface(pTempSurface);
+	SDL_FreeSurface(pTempbSurface);
 	//SDL_FreeSurface(pTempSurfacepepe);
 
 	//Load 한 Texture 의 크기를 가져옴
 
-	m_sourceRectangle.w = m_sourceRectangle2.w = 128;
-	m_sourceRectangle.h = m_sourceRectangle2.h = 82;
+	m_sourceRectangle.w = 128;
+	m_sourceRectangle.h = 128;
+	m_BgsourceRectangle.w = width;
+	m_BgsourceRectangle.h = height;
 
 
 	//SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
 
 	//원본 상자와 대상상자 생성 위치 설정
-	m_destinationRectangle.x = 110;
-	m_destinationRectangle.y = 150;
-	m_destinationRectangle2.x = 0;
-	m_destinationRectangle2.y = 0;
-
+	m_BgsourceRectangle.x = 0;
+	m_BgsourceRectangle.y = 0;
+	m_destinationRectangle.x = 0;
+	m_destinationRectangle.y = 350;
 
 
 	//출력 범위를 동일하게 설정
-	
-	m_destinationRectangle2.w = m_sourceRectangle2.w ;
-	m_destinationRectangle2.h = m_sourceRectangle2.h ;
 
-	m_destinationRectangle.w = m_sourceRectangle.w ;
-	m_destinationRectangle.h = m_sourceRectangle.h ;
+	m_BgdestinationRectangle.w = m_BgsourceRectangle.w;
+	m_BgdestinationRectangle.h = m_BgsourceRectangle.h;
+
+	m_destinationRectangle.w = m_sourceRectangle.w;
+	m_destinationRectangle.h = m_sourceRectangle.h;
 
 
 	printf("SDL_Init failed: %s\n", SDL_GetError());
@@ -82,9 +85,10 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 
 void Game::update() {
-
+	i++;
+	m_destinationRectangle.x = i / 100;
 	m_sourceRectangle.x = 128 * ((SDL_GetTicks() / 100) % 6);
-	m_sourceRectangle2.x = 128 * ((SDL_GetTicks() / 50) % 6);
+
 }
 
 
@@ -92,14 +96,15 @@ void Game::render() {
 	SDL_RenderClear(m_pRenderer); //백버퍼 그리기
 
 	//백버퍼와 메인버퍼 사이에 랜더링 할 함수를 삽입 ) ****************** 중요 ********************
+	SDL_RenderCopy(m_pRenderer, m_Background, &m_BgsourceRectangle, &m_BgdestinationRectangle);
 	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
-	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle2, &m_destinationRectangle2);
-	
+
+
 	/// ///////////////////////////////////////////////////////////////////////////////////////
 
 	SDL_RenderPresent(m_pRenderer); // 메인버퍼 출력
 
-	
+
 }
 
 	
