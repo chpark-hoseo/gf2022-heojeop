@@ -14,15 +14,10 @@ public:
 	bool running();
 	void handleEvents();
 	void clean();
-	void moveTexture();
 
 private:
 	int m_currentFrame;
 	TextureManager m_textureManager;
-	//SDL_Texture* m_pTexture;
-	//SDL_Texture* m_Background;
-	//SDL_Rect m_BgsourceRectangle, m_sourceRectangle, m_sourceRectangle2;// 원본 사각형
-	//SDL_Rect m_BgdestinationRectangle, m_destinationRectangle, m_destinationRectangle2; // 대상 사각형
  	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
 	bool m_bRunning;

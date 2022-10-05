@@ -12,7 +12,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 
 			if (m_pRenderer != 0) {
-				SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+				SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
 
 			}
 
@@ -36,9 +36,6 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 
 
-	
-
-
 	printf("SDL_Init failed: %s\n", SDL_GetError());
 
 	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
@@ -49,6 +46,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 void Game::update() {
 
+	m_currentFrame = ((SDL_GetTicks() / 100) % 6);
 
 }
 
@@ -57,8 +55,8 @@ void Game::render() {
 	SDL_RenderClear(m_pRenderer); //백버퍼 그리기
 
 	//백버퍼와 메인버퍼 사이에 랜더링 할 함수를 삽입 ) ****************** 중요 ********************
-	m_textureManager.draw("animate", 0, 0, 128, 82, m_pRenderer);
-	m_textureManager.drawFrame("animate", 100, 100, 128, 82, 0, m_currentFrame, m_pRenderer);
+	m_textureManager.draw("animate", 0 , 0, 128, 82, m_pRenderer);
+	m_textureManager.drawFrame("animate", 100, 100, 128, 82,0,m_currentFrame,m_pRenderer);
 
 	/// ///////////////////////////////////////////////////////////////////////////////////////
 
