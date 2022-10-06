@@ -32,15 +32,12 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 	//surface 생성
 
-	m_textureManager.load("Assets/animate-alpha.png", "animate", m_pRenderer);
-
-
-
-	printf("SDL_Init failed: %s\n", SDL_GetError());
+	m_textureManager.load("assets/animate-alpha.png", "animate", m_pRenderer);
 
 	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
 	return true;
 }
+
 
 
 
@@ -56,7 +53,7 @@ void Game::render() {
 
 	//백버퍼와 메인버퍼 사이에 랜더링 할 함수를 삽입 ) ****************** 중요 ********************
 	m_textureManager.draw("animate", 0 , 0, 128, 82, m_pRenderer);
-	m_textureManager.drawFrame("animate", 100, 100, 128, 82,0,m_currentFrame,m_pRenderer);
+	m_textureManager.drawFrame("animate", 100, 100, 128, 82 ,0,m_currentFrame,m_pRenderer);
 
 	/// ///////////////////////////////////////////////////////////////////////////////////////
 
