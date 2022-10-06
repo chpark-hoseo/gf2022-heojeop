@@ -81,12 +81,26 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
 	return true;
 }
+void Game::moveTexture() {
+	
 
+	m_destinationRectangle.x += i;
+	if (m_destinationRectangle.x == 400) {
+		i = -1;
+
+	}
+	else if (m_destinationRectangle.x == 0) {
+		i = 1;
+	}
+
+}
 
 
 void Game::update() {
-	i++;
-	m_destinationRectangle.x = i / 100;
+	
+	moveTexture();
+	
+	SDL_Delay(10);
 	m_sourceRectangle.x = 128 * ((SDL_GetTicks() / 100) % 6);
 
 }

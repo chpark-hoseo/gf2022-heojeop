@@ -6,7 +6,7 @@ public:
 	Game(){}
 	~Game(){}
 
-	int i = 0;
+	int i = 1;
 	bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
 	void render();
 	void update();
