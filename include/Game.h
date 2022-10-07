@@ -7,6 +7,7 @@ public:
 	~Game(){}
 
 	int i = 1;
+	int j = 1;
 	bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
 	void render();
 	void update();

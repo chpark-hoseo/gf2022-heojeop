@@ -85,6 +85,13 @@ void Game::moveTexture() {
 	
 
 	m_destinationRectangle.x += i;
+	m_destinationRectangle.y -= j;
+	if (m_destinationRectangle.y == 300) {
+		j = -1;
+	}
+	else if (m_destinationRectangle.y == 350) {
+		j = 1;
+	}
 	if (m_destinationRectangle.x == 400) {
 		i = -1;
 
