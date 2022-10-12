@@ -1,9 +1,11 @@
 #include "TextureManager.h"
 
+TextureManager* TextureManager::s_pInstance = 0;
 
 bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pRenderer) {
 	
 	
+
 	//파일 입출력 예외처리
 	SDL_Surface* psurface = IMG_Load(fileName.c_str());
 	if (psurface == nullptr) {

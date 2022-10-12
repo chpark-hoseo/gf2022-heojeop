@@ -1,8 +1,17 @@
-﻿#include "SDL.h"
+﻿	#include "SDL.h"
 #pragma once
+
 class TextureManager {
+
 public:
-	TextureManager() {}
+
+	static TextureManager* Instance() {
+		if (s_pInstance == 0)
+			s_pInstance = new TextureManager();
+
+		return s_pInstance;
+	}
+	
 	~TextureManager(){}
 
 
@@ -17,8 +26,12 @@ public:
 
 
 private:
-	
+	TextureManager() {}
+	static TextureManager* s_pInstance;
 
 
 	std::map<std::string, SDL_Texture*> m_textureMap;
 };
+
+typedef TextureManager TheTextureManager;
+

@@ -17,7 +17,7 @@ public:
 
 private:
 	int m_currentFrame = 1;
-	TextureManager m_textureManager;
+	//TextureManager m_textureManager;
  	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
 	bool m_bRunning;
