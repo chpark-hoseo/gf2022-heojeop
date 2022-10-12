@@ -1,5 +1,6 @@
 #include "TextureManager.h"
 
+//멤버 변수는 모든 객체가 공유하고 프로그램 전체 영역에서 메모리 유지가 되어야 하기 때문에 전역 범위에서 초기화를 해 주어야 함
 TextureManager* TextureManager::s_pInstance = 0;
 
 bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pRenderer) {
@@ -54,4 +55,9 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
 
 	
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &dstRect, 0, 0, flip);
+}
+
+// TextureMap 지우기
+void TextureManager::clearTextureMap(std::string id) {
+	m_textureMap.erase(id);
 }

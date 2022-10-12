@@ -1,6 +1,6 @@
 ﻿	#include "SDL.h"
 #pragma once
-
+ 
 class TextureManager {
 
 public:
@@ -12,7 +12,7 @@ public:
 		return s_pInstance;
 	}
 	
-	~TextureManager(){}
+	
 
 
 	//load(이미지 파일 이름 , 해당 텍스쳐 별명(id) , 해당 텍스쳐를 띄울 랜더러)
@@ -24,9 +24,12 @@ public:
 	//drawFrame(그리고 싶은 텍스쳐 별명(id) , 화면의 위치 , 텍스쳐 크기,시트의 행(row) , 나타낼 프레임 , 랜더러 , 이미지 옵션)
 	void drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
+	//clearTextureMap ( TextureMap 지우기 )
+	void clearTextureMap(std::string id);
 
 private:
 	TextureManager() {}
+	~TextureManager() {}
 	static TextureManager* s_pInstance;
 
 
