@@ -19,6 +19,7 @@ int main(int argc, char* argv[]){
 		g_game->handleEvents(); //종료버튼
 		g_game->update(); //실행중
 		g_game->render(); //메인 버퍼 출력
+		SDL_Delay(10);
 	}
 	g_game->clean(); //정상 종료
 

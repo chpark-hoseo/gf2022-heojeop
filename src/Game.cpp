@@ -30,12 +30,17 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	}
 
 
+
 	//surface 생성
 
-	if ( !TheTextureManager::Instance()->load("Assets/animate-alpha.png", "animate", m_pRenderer))
+	
+	if (!TheTextureManager::Instance()->load("Assets/animate-alpha.png", "animate", m_pRenderer))
 	{
 		return false;
 	}
+
+	m_go.load(100, 100, 128, 82, "animate");
+	m_player.load(300, 300, 128, 82, "animate");
 
 	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
 	return true;
@@ -45,8 +50,9 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 
 void Game::update() {
-
-	m_currentFrame = ((SDL_GetTicks() / 100) % 6);
+	//대상상자 위치 Update 
+	m_go.update();
+	m_player.update();
 
 }
 
@@ -55,10 +61,8 @@ void Game::render() {
 	SDL_RenderClear(m_pRenderer); //백버퍼 그리기
 
 	//백버퍼와 메인버퍼 사이에 랜더링 할 함수를 삽입 ) ****************** 중요 ********************
-	
-	TheTextureManager::Instance()->draw("animate", 0, 0, 128, 82, m_pRenderer);
-
-	TheTextureManager::Instance()->drawFrame("animate", 100, 100, 128, 82, 0, m_currentFrame, m_pRenderer);
+	m_go.draw(m_pRenderer);
+	m_player.draw(m_pRenderer);
 	/// ///////////////////////////////////////////////////////////////////////////////////////
 
 	SDL_RenderPresent(m_pRenderer); // 메인버퍼 출력

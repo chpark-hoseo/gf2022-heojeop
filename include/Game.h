@@ -1,13 +1,16 @@
 ﻿//헤더파일 (클래스의 선언을 담당)
 #include "SDL.h"
 #include "TextureManager.h"
-
+#include "GameObject.h"
+#include "Player.h"
 class Game {
 public:
 	Game(){}
 	~Game(){}
 
 	int i = 0;
+	GameObject m_go;
+	Player m_player;
 	bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
 	void render();
 	void update();
