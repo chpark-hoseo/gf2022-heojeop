@@ -3,14 +3,17 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Player.h"
+#include "Monster.h"
 class Game {
 public:
 	Game(){}
 	~Game(){}
 
 	int i = 0;
+	
 	GameObject m_go;
 	Player m_player;
+	Monster m_monster1, m_monster2;
 	bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
 	void render();
 	void update();
@@ -19,7 +22,7 @@ public:
 	void clean();
 
 private:
-	int m_currentFrame = 1;
+	int m_currentFrame;
 	//TextureManager m_textureManager;
  	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;

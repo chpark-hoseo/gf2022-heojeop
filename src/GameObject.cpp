@@ -11,12 +11,11 @@ void GameObject::load(int x, int y, int width, int height, std::string textureID
         m_textureID = textureID;
         m_currentRow = 0;
         m_currentFrame = 0;
-    }
+}
 
 // TextureManager 이용하여 m_textureID 그리기
 void GameObject::draw(SDL_Renderer* pRenderer) {
-    TheTextureManager::Instance()
-        ->drawFrame(m_textureID,
+    TheTextureManager::Instance()->drawFrame(m_textureID,
             m_x, m_y,
             m_width, m_height,
             m_currentRow,
