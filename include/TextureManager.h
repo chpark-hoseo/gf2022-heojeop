@@ -11,9 +11,6 @@ public:
 
 		return s_pInstance;
 	}
-	
-	
-
 
 	//load(이미지 파일 이름 , 해당 텍스쳐 별명(id) , 해당 텍스쳐를 띄울 랜더러)
 	bool load(std::string fileName, std::string id, SDL_Renderer* pRenderer);

@@ -3,7 +3,7 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Player.h"
-#include "Monster.h"
+#include "Enemy.h"
 class Game {
 
 	std::vector<GameObject*> m_gameObjects;
@@ -20,7 +20,7 @@ public:
 
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
 
-	Monster m_monster1, m_monster2;
+	
 	int i = 0;
 	bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
 	void render();
@@ -39,4 +39,5 @@ private:
 	SDL_Renderer* m_pRenderer;
 	bool m_bRunning;
 };
+
 typedef Game TheGame;
