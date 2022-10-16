@@ -2,6 +2,8 @@
 #include "Game.h"
 #include "TextureManager.h"
 
+//정적멤버변수정의
+Game* Game::s_pInstance = 0;
 
 bool Game::init(const char* title, int xpos, int ypos, int height, int width, int flags) {
 

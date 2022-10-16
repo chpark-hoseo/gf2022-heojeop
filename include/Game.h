@@ -9,13 +9,19 @@ class Game {
 	std::vector<GameObject*> m_gameObjects;
 
 public:
-
-	Game(){}
-	~Game(){}
-
-	int i = 0;
 	
+	static Game* Instance() {
+		if (s_pInstance == 0) {
+			s_pInstance = new Game();
+			return s_pInstance;
+		}
+		return s_pInstance;
+	}
+
+	SDL_Renderer* getRenderer() const { return m_pRenderer; }
+
 	Monster m_monster1, m_monster2;
+	int i = 0;
 	bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
 	void render();
 	void update();
@@ -24,14 +30,13 @@ public:
 	void clean();
 
 private:
+	Game() {}
+	~Game() {}
+	static Game* s_pInstance;
 	int m_currentFrame;
 	//TextureManager m_textureManager;
  	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
 	bool m_bRunning;
 };
-
-/*typedef struct SDL_Rect {
-	int x, y;
-	int w, h;
-} SDL_Rect; */
+typedef Game TheGame;
