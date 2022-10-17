@@ -8,6 +8,7 @@ class Player : public SDLGameObject
 public:
 
     Player(const LoaderParams* pParams);
+    void handleInput();
     virtual void draw();
     virtual void update();
     virtual void clean();
