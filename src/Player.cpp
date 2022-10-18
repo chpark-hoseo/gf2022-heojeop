@@ -11,7 +11,7 @@ void Player::draw()
 void Player::update()
 {
     handleInput();
-    m_currentFrame = ((SDL_GetTicks() / 100) % 6);
+    //m_currentFrame = ((SDL_GetTicks() / 100) % 6);
     SDLGameObject::update(); // ← 부모 클래스의 함수 호출 
 }
 
