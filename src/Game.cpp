@@ -1,7 +1,7 @@
 ﻿//Game.h에서 선언한 클래스의 정의(기능)
 #include "Game.h"
 #include "TextureManager.h"
-
+#include "InputHandler.h"
 //정적멤버변수정의
 Game* Game::s_pInstance = 0;
 
@@ -85,6 +85,7 @@ bool Game::running() {
 //정상적인 프로그램 종료를 위해 종료버튼 구현
 void Game::handleEvents() {
 	SDL_Event event;
+	TheInputHandler::Instance()->update();
 	//while 문을 이용하여 이벤트를 검사
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
