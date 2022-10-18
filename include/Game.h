@@ -4,7 +4,7 @@
 #include "GameObject.h"
 #include "Player.h"
 #include "Enemy.h"
-
+#include "Background.h"
 class Game {
 
 	

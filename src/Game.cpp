@@ -1,6 +1,7 @@
 ﻿//Game.h에서 선언한 클래스의 정의(기능)
 #include "Game.h"
 #include "TextureManager.h"
+#include "InputHandler.h"
 
 //정적멤버변수정의
 Game* Game::s_pInstance = 0;
@@ -30,9 +31,6 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	else {
 		return false; //SDL 초기화 실패
 	}
-
-
-
 	//surface 생성
 	if (!TheTextureManager::Instance()->load("assets/Background1.jpg", "Background", m_pRenderer))
 	{
@@ -41,11 +39,10 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	if (!TheTextureManager::Instance()->load("Assets/idle.png", "idle", m_pRenderer))
 	{
 		return false;
-	}
+	} 
 	
-	m_gameObjects.push_back(new Player(new LoaderParams(0, 0, 1024, 600, "Background")));
-	m_gameObjects.push_back(new Enemy(new LoaderParams(100, 270, 325, 244, "idle")));
-
+	m_gameObjects.push_back(new Background(new LoaderParams(0, 0, 2048, 600, "Background")));
+	m_gameObjects.push_back(new Player(new LoaderParams(100, 270, 325, 244, "idle")));
 
 	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
 	return true;
@@ -56,11 +53,12 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 void Game::update() {
 	//대상상자 위치 Update 
+
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->update();
 	}
-
+	
 }
 
 
@@ -90,8 +88,10 @@ bool Game::running() {
 //정상적인 프로그램 종료를 위해 종료버튼 구현
 void Game::handleEvents() {
 	SDL_Event event;
+	TheInputHandler::Instance()->update();
+	
 	//while 문을 이용하여 이벤트를 검사
-	while (SDL_PollEvent(&event)) {
+	/*while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_QUIT:
 			m_bRunning = false; // false 전환을 통해 프로그램 종료
@@ -99,7 +99,7 @@ void Game::handleEvents() {
 		default:
 			break;
 		}
-	}
+	}*/
 }
 //window와 render 삭제후 완전종료
 void Game::clean() {
