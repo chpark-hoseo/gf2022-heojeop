@@ -3,7 +3,7 @@
 
 class InputHandler {
 public:
-    ~InputHandler() {}
+    
     static InputHandler* Instance() {
         if (s_pInstance == 0) {
             s_pInstance = new InputHandler();
@@ -15,6 +15,7 @@ public:
     void clean() {}
 
 private:
+    ~InputHandler() {}
     InputHandler() {}
     static InputHandler* s_pInstance;
     const Uint8* m_keystates;

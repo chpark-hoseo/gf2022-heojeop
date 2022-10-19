@@ -36,13 +36,13 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("Assets/idle.png", "idle", m_pRenderer))
+	if (!TheTextureManager::Instance()->load("Assets/Charactor.png", "Charactor", m_pRenderer))
 	{
 		return false;
 	} 
 	
 	m_gameObjects.push_back(new Background(new LoaderParams(0, 0, 2048, 600, "Background")));
-	m_gameObjects.push_back(new Player(new LoaderParams(100, 270, 325, 244, "idle")));
+	m_gameObjects.push_back(new Player(new LoaderParams(100, 270, 325, 244, "Charactor")));
 
 	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
 	return true;
