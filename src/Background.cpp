@@ -3,7 +3,7 @@
 Background::Background(const LoaderParams* pParams) : SDLGameObject(pParams) {}
 
 void Background::draw() {
-	SDLGameObject::draw();
+	SDLGameObject::draw(flip = SDL_FLIP_NONE);
 }
 
 void Background::update() {
