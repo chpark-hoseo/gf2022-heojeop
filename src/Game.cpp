@@ -6,6 +6,8 @@
 //정적멤버변수정의
 Game* Game::s_pInstance = 0;
 
+
+
 bool Game::init(const char* title, int xpos, int ypos, int height, int width, int flags) {
 
 
@@ -36,13 +38,14 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("Assets/char.png", "Char", m_pRenderer))
+	if (!TheTextureManager::Instance()->load("Assets/Charac.png", "Charactor", m_pRenderer))
 	{
 		return false;
 	} 
 	
 	m_gameObjects.push_back(new Background(new LoaderParams(0, 0, 2048, 600, "Background")));
-	m_gameObjects.push_back(new Player(new LoaderParams(100, 270, 280, 244, "Char")));
+	m_gameObjects.push_back(new Player(new LoaderParams(100, 270, 280, 244, "Charactor")));
+
 
 	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
 	return true;
@@ -58,6 +61,7 @@ void Game::update() {
 	{
 		m_gameObjects[i]->update();
 	}
+	
 	
 }
 

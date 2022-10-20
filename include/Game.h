@@ -7,8 +7,6 @@
 #include "Background.h"
 class Game {
 
-	
-
 public:
 	std::vector<GameObject*> m_gameObjects;
 
