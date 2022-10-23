@@ -1,4 +1,5 @@
 #include "Background.h"
+#include "Player.h"
 
 Background::Background(const LoaderParams* pParams) : SDLGameObject(pParams) {}
 
@@ -7,7 +8,7 @@ void Background::draw() {
 }
 
 void Background::update() {
-
+	
 }
 
 void Background::clean() {

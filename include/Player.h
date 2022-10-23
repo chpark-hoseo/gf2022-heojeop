@@ -7,23 +7,19 @@
 class Player : public SDLGameObject
 {
 public:
-
-
     
     Player(const LoaderParams* pParams);
     void handleInput();
     virtual void draw();
     virtual void update();
     virtual void clean();
-    
+    void a();
 
+    
 private:
-    float gravity = 0.2f;
-    float fallspped = -5.0f;
-    float jumpforce = 5.0f;
-    float curjumpforce = 0.0;
-    float deltatime;
-    enum charstate { idle, run, attack, upper, dash , jumpattack, jump, guard };
+
+    int ground = 270;
+    enum charstate { idle, run , jump , attack , upper , dash, jumpattack,  guard, air};
     charstate cha = idle;
 };
 

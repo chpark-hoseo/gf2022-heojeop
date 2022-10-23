@@ -3,6 +3,10 @@
 
 Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams) {}
 
+
+void Player::a(){
+
+}
 void Player::draw()
 {
     SDLGameObject::draw(flip);
@@ -10,13 +14,10 @@ void Player::draw()
 //대상상자X 좌표를 -1 씩 Update
 void Player::update()
 {
-    if (cha == attack) {
-        m_currentFrame = ((SDL_GetTicks() / 50) % 24);
-        handleInput();
-    }else if (cha == upper || cha == dash || cha == jump || cha == jumpattack) {
-        m_currentFrame = ((SDL_GetTicks() / 100) % 8);
-        handleInput();
-    }
+    int a = Player::m_position.getY();
+    printf("%d\n", a);
+    printf("Frame =  %d \n ", m_currentFrame);
+
     if (cha == idle) {
         m_currentFrame = ((SDL_GetTicks() / 100) % 8);
         m_currentRow = 0;
@@ -26,24 +27,31 @@ void Player::update()
         m_acceleration.setY(0);
         handleInput();
     }
-    
+
+    if (cha == attack) {
+        m_currentFrame = ((SDL_GetTicks() / 50) % 24);
+        handleInput();
+    }
+
+    printf("cha = %d\n", cha);
 
     SDLGameObject::update(); // ← 부모 클래스의 함수 호출 
     
 }
 
+
 void Player::handleInput()
 {
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
-        cha = run; 
+        cha = run;
         if (cha == run) {
             flip = SDL_FLIP_NONE;
             m_currentRow = 1;
             m_velocity.setX(5);
         }
         cha = idle;
-
     }
+
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
         cha = run;
         if (cha == run) {
@@ -52,21 +60,44 @@ void Player::handleInput()
             m_velocity.setX(-5);
         }
         cha = idle;
-
     }
+    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP)) {
+        cha = run;
+        if (cha == run) {
+            flip = flip;
+            m_currentRow = 1;
+            m_velocity.setY(-3);
+            if (Player::m_position.getY() <= 230) {
+                m_velocity.setY(0);
+            }
+        }
+        cha = idle;
+    }
+    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_DOWN)) {
+        cha = run;
+        if (cha == run) {
+            flip = flip;
+            m_currentRow = 1;
+            m_velocity.setY(3);
+            if (Player::m_position.getY() >= 390) {
+                m_velocity.setY(0);
+            }
+        }
+        cha = idle;
+    }
+
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_C)) {
         cha = jump;
-        if (cha == jump) {
-            m_currentRow = 2;
-        }
 
     }
+    
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_X)) {
         if (cha == idle || cha == run) {
             cha = attack;
             m_velocity.setX(0);
             m_currentRow = 3;
         }
+       
         if (cha == jump) {
             cha = jumpattack;
             m_velocity.setX(0);
@@ -99,13 +130,6 @@ void Player::handleInput()
             m_currentRow = m_currentRow;
         }
     }
-}
-void jump() {
-    
-   
-}
-void attackcount() {
-    
 }
 
 void Player::clean() {}
