@@ -17,8 +17,7 @@ public:
 
     
 private:
-
-    int ground = 270;
+    int g;
     enum charstate { idle, run , jump , attack , upper , dash, jumpattack,  guard, air};
     charstate cha = idle;
 };
