@@ -8,7 +8,7 @@ void Background::draw() {
 }
 
 void Background::update() {
-	
+
 }
 
 void Background::clean() {

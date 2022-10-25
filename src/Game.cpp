@@ -37,12 +37,17 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	{
 		return false;
 	}
+	if (!TheTextureManager::Instance()->load("assets/info.png", "info", m_pRenderer))
+	{
+		return false;
+	}
 	if (!TheTextureManager::Instance()->load("Assets/Charac.png", "Charactor", m_pRenderer))
 	{
 		return false;
 	} 
 	
 	m_gameObjects.push_back(new Background(new LoaderParams(0, 0, 2048, 600, "Background")));
+	m_gameObjects.push_back(new Background(new LoaderParams(0, 0, 250, 500, "info")));
 	m_gameObjects.push_back(new Player(new LoaderParams(100, 270, 280, 244, "Charactor")));
 
 

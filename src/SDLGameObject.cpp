@@ -24,7 +24,3 @@ void SDLGameObject::update()
     m_velocity += m_acceleration;
     m_position += m_velocity;
 }
-
-Vector2D& SDLGameObject::getposition() {
-    return m_position;
-}

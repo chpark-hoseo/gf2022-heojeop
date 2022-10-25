@@ -15,14 +15,13 @@ void Player::draw()
 void Player::update()
 {
     handleInput();
-    
+    m_currentFrame = ((SDL_GetTicks() / 100) % 8);
     //printf("%d\n", g);
-    //printf("Frame =  %d \n ", m_currentFrame);
+    printf("Frame =  %d \n ", m_currentFrame);
     int a = Player::m_position.getY();
-    printf("%d\n", cha);
+    //printf("%d\n", cha);
     if (cha == idle || cha == guard ) {
-        m_currentFrame = ((SDL_GetTicks() / 100) % 8);
-        m_currentRow = 0;
+        m_currentRow = idle;
         m_velocity.setX(0);
         m_velocity.setY(0);
         m_acceleration.setX(0);
@@ -31,23 +30,21 @@ void Player::update()
     }
 
     if (cha == upper) {
-        m_currentRow = 6;
-        m_currentFrame = ((SDL_GetTicks() / 100) % 8);
+        m_currentRow = upper;
         m_velocity.setX(0);
         m_velocity.setY(0);
     }
-    if (cha == attack) {
+    if (cha == attack ) {
         m_currentFrame = ((SDL_GetTicks() / 50) % 24);
-        handleInput();
+
     }
     if (cha == dash) {
-        m_currentRow = 5;
-        m_currentFrame = ((SDL_GetTicks() / 100) % 8);
+        m_currentRow = dash;
         m_velocity.setX(0);
         m_velocity.setY(0);
     }
     if (cha == jump || cha == jumpattack) {
-        m_currentFrame = ((SDL_GetTicks() / 100) % 8);
+       
         if (Player::m_position.getY() == g) {
             m_acceleration.setY(-1);
         }
@@ -77,14 +74,14 @@ void Player::handleInput()
         if (cha != jump) {
             cha = run;
             flip = SDL_FLIP_NONE;
-            m_currentRow = 1;
+            m_currentRow = run;
             m_velocity.setX(5);
             cha = idle;
         }
         if (cha == jump) {
             cha = jump;
             flip = SDL_FLIP_NONE;
-            m_currentRow = 2;
+            m_currentRow = jump;
             m_velocity.setX(5);
         }
         if (cha == upper) {
@@ -96,14 +93,14 @@ void Player::handleInput()
         if (cha != jump ) {
             cha = run;
             flip = SDL_FLIP_HORIZONTAL;
-            m_currentRow = 1;
+            m_currentRow = run;
             m_velocity.setX(-5);
             cha = idle;
         }
         if (cha == jump) {
             cha = jump;
             flip = SDL_FLIP_HORIZONTAL;
-            m_currentRow = 2;
+            m_currentRow = jump;
             m_velocity.setX(-5);
         }
         if (cha == upper) {
@@ -115,7 +112,7 @@ void Player::handleInput()
         if (cha != jump) {
             cha = run;
             flip = flip;
-            m_currentRow = 1;
+            m_currentRow = run;
             m_velocity.setY(-3);
             cha = idle;
             if (Player::m_position.getY() <= 230) {
@@ -124,7 +121,7 @@ void Player::handleInput()
             }
             if (cha == jump) {
                 cha = jump;
-                m_currentRow = 2;
+                m_currentRow = jump;
                 m_velocity.setX(0);
             }
         }
@@ -134,38 +131,47 @@ void Player::handleInput()
         if (cha != jump) {
             cha = run;
             flip = flip;
-            m_currentRow = 1;
+            m_currentRow = run;
             m_velocity.setY(3);
             cha = idle;
             if (Player::m_position.getY() >= 390) {
                 m_velocity.setY(0);
             }
         }
-        if (cha == jump ) {
-            return;
-        }
-
     }
 
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_C)) {
         if (cha == jump) {
             return;
         }
-        m_currentRow = 2;
         g = Player::m_position.getY();
+        m_currentRow = 2;
         cha = jump;
 
     }
     
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_X)) {
-        if (cha == idle || cha == run) {
+        if (cha == idle || cha == run ) {
             cha = attack;
             m_velocity.setX(0);
             m_velocity.setY(0);
-            m_currentRow = 3;
+            m_currentRow = attack;
         }
+
+        /*if (cha == attack1 && (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_X))) {
+     
+            m_velocity.setX(0);
+            m_velocity.setY(0);
+            m_currentRow = attack2;
+        }
+        if (cha == attack2 && (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_X))) {
+            cha == attack3;
+            m_velocity.setX(0);
+            m_velocity.setY(0);
+            m_currentRow = attack3;
+        }*/ 
         if (cha == jump) {
-            m_currentRow = 4;
+            m_currentRow = jumpattack;
         }
     }
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_Z)) {
@@ -178,7 +184,7 @@ void Player::handleInput()
 
     }
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_S)) {
-        if (cha == idle || cha == run) {
+        if (cha == run) {
             cha = dash;
         }
 
@@ -187,7 +193,7 @@ void Player::handleInput()
         if (cha != jump) {
             cha = guard;
             m_velocity.setX(0);
-            m_currentRow = 7;
+            m_currentRow = guard;
         }
         if (cha == jump) {
             m_currentRow = m_currentRow;

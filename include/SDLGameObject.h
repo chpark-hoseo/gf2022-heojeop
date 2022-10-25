@@ -9,7 +9,6 @@ public:
 	virtual void update();
 	virtual void clean() {}
 	virtual ~SDLGameObject() {}
-	Vector2D& getposition();
 
 protected:
 	Vector2D m_acceleration;
