@@ -16,10 +16,11 @@ void Player::update()
 {
     handleInput();
     m_currentFrame = ((SDL_GetTicks() / 100) % 8);
-    //printf("%d\n", g);
-    printf("Frame =  %d \n ", m_currentFrame);
+    
+    //printf("Frame =  %d \n ", m_currentFrame);
     int a = Player::m_position.getY();
-    //printf("%d\n", cha);
+    printf("Position = %d\n", a);
+    printf("State = %d\n", cha);
     if (cha == idle || cha == guard ) {
         m_currentRow = idle;
         m_velocity.setX(0);
@@ -184,8 +185,9 @@ void Player::handleInput()
 
     }
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_S)) {
-        if (cha == run) {
+        if (cha == run || cha == idle) {
             cha = dash;
+            m_currentRow = dash;
         }
 
     }
