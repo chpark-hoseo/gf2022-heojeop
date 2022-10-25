@@ -2,7 +2,7 @@
 #include "Game.h"
 #include "TextureManager.h"
 #include "InputHandler.h"
-#include "Player.h"
+	
 
 //정적멤버변수정의
 Game* Game::s_pInstance = 0;
