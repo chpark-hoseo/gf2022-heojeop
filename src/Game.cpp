@@ -45,12 +45,17 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 	GameObject* m_go = new GameObject();
 	GameObject* m_player = new Player();
+	GameObject* m_monster = new GameObject(); // monster 객체
+	
+	
 
-	m_go->load(100, 100, 128, 82, "animate");
-	m_player->load(300, 300, 150, 150, "pepe");
-	m_gameObjects.push_back(m_go);
-	m_gameObjects.push_back(m_player);
+	//m_go->load(100, 100, 128, 82, "animate");
+	//m_player->load(300, 300, 150, 150, "pepe");
+	//m_gameObjects.push_back(m_go);
+	//m_gameObjects.push_back(m_player);
 
+	m_monster->load(100, 100, 150, 150, "pepe");
+	m_gameObjects.push_back(m_monster);
 
 	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
 	return true;
@@ -61,7 +66,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 void Game::update() {
 	//대상상자 위치 Update 
-	for (int i = 0; i < m_gameObjects.size(); i++)
+	for(int i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->update();
 	}
@@ -73,8 +78,6 @@ void Game::render() {
 	SDL_RenderClear(m_pRenderer); //백버퍼 그리기
 
 	//백버퍼와 메인버퍼 사이에 랜더링 할 함수를 삽입 ) ****************** 중요 ********************
-	m_monster2.draw(m_pRenderer);
-	m_monster1.draw(m_pRenderer);
 
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
