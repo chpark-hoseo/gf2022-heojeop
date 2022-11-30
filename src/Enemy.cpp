@@ -15,10 +15,10 @@ void Enemy::update()
         printf("shoot \n");
     }
     Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
-    m_velocity = (*vec - m_position) / 100;
+    m_velocity = (*vec - m_position);
 
 
-    m_currentFrame = ((SDL_GetTicks() / 100) % 6);
+    //m_currentFrame = ((SDL_GetTicks() / 100) % 6);
     //m_acceleration.setX(0.1);
     SDLGameObject::update();
 }

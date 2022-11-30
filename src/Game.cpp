@@ -39,10 +39,15 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	{
 		return false;
 	}
+
+	if (!TheTextureManager::Instance()->load("Assets/Cursor.png", "Cursor", m_pRenderer))
+	{
+		return false;
+	} 
 	m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
-	m_gameObjects.push_back(new Enemy(new LoaderParams(200, 200, 128, 82, "animate")));
+	m_gameObjects.push_back(new Enemy(new LoaderParams(0, 0, 0, 0, "Cursor")));
 
-
+	//SDL_ShowCursor(false);
 	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
 	return true;
 }

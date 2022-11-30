@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -157,6 +157,7 @@
     <ClInclude Include="include\GameObject.h" />
     <ClInclude Include="include\InputHandler.h" />
     <ClInclude Include="include\LoaderParams.h" />
+    <ClInclude Include="include\Mouse.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\SDL.h" />
     <ClInclude Include="include\SDLGameObject.h" />
