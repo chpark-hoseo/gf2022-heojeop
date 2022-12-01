@@ -14,7 +14,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 
 			if (m_pRenderer != 0) {
-				SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+				SDL_SetRenderDrawColor(m_pRenderer, 100, 100, 100, 255);
 
 			}
 
@@ -40,14 +40,15 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 		return false;
 	}
 
-	if (!TheTextureManager::Instance()->load("Assets/Cursor.png", "Cursor", m_pRenderer))
+	if (!TheTextureManager::Instance()->load("Assets/Package.png", "Cursor", m_pRenderer))
 	{
 		return false;
 	} 
-	m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
-	m_gameObjects.push_back(new Enemy(new LoaderParams(0, 0, 0, 0, "Cursor")));
-
-	//SDL_ShowCursor(false);
+	//m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
+	//m_gameObjects.push_back(new Enemy(new LoaderParams(0, 0, 50, 50, "Cursor")));
+	m_gameObjects.push_back(new Mouse(new LoaderParams(0, 0, 20, 20, "Cursor")));
+	
+	SDL_ShowCursor(false);
 	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
 	return true;
 }

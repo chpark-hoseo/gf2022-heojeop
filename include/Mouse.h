@@ -1,13 +1,13 @@
 #pragma once
-#include "SDL2/SDL.h"
+#include "SDLGameObject.h"
 
-class Mouse {
-
-	SDL_Texture* tex;
-	SDL_Rect Rect;
-	SDL_Rect Point;
-
-public:
+class Mouse : public SDLGameObject {
 	
+public:
+
+	Mouse(const LoaderParams* pParams);
+	virtual void draw();
+	virtual void update();
+	//virtual void clean();
 
 };
