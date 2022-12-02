@@ -35,7 +35,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 	//surface 생성
 
-	if (!TheTextureManager::Instance()->load("Assets/animate-alpha.png", "animate", m_pRenderer))
+	if (!TheTextureManager::Instance()->load("Assets/Zoom.png", "Zoom", m_pRenderer))
 	{
 		return false;
 	}

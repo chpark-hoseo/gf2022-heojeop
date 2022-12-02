@@ -1,6 +1,7 @@
 #include "Mouse.h"
 #include "InputHandler.h"
 
+
 Mouse::Mouse(const LoaderParams* pParams) : SDLGameObject(pParams) {};
 
 void Mouse::draw() {
@@ -9,11 +10,13 @@ void Mouse::draw() {
 }
 
 
-void Mouse::update() {
+void Mouse::update(){
 
-	
+	if (TheInputHandler::Instance()->getMouseButtonState(RIGHT)) {
+
+	}
 	Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
 	m_velocity = (*vec - m_position);
-	m_currentFrame = ((SDL_GetTicks() / 300) % 4);
+	m_currentFrame = 0;
 	SDLGameObject::update();
 }

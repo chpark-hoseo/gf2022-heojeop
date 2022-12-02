@@ -27,20 +27,33 @@ void InputHandler::update()
             m_mousePosition->setX(event.motion.x);
             m_mousePosition->setY(event.motion.y);
         }
+        //if (SDL_MOUSEBUTTONDOWN == event.type) {
+        //    if (SDL_BUTTON_RIGHT == event.button.button) {
+        //        printf("Right Click\n");
+        //    }
+        //}
+        //if (SDL_MOUSEBUTTONUP == event.type) {
+        //    if (SDL_BUTTON_RIGHT == event.button.button) {
+        //        printf("Right Click up\n");
+        //    }
+        //}
+
         else if (event.type == SDL_MOUSEBUTTONDOWN) {
-            if (event.button.button == SDL_BUTTON_LEFT) {
+            if (SDL_BUTTON_LEFT == event.button.button ) {
                 m_mouseButtonStates[LEFT] = true;
+                printf("Left Click Down\n");
             }
-            if (event.button.button == SDL_BUTTON_MIDDLE) {
+            if (SDL_BUTTON_MIDDLE == event.button.button ) {
                 m_mouseButtonStates[MIDDLE] = true;
             }
-            if (event.button.button == SDL_BUTTON_RIGHT) {
+            if (SDL_BUTTON_RIGHT == event.button.button)  {
                 m_mouseButtonStates[RIGHT] = true;
+
             }
         }
         else if (event.type == SDL_MOUSEBUTTONUP) {
-            if (event.button.button == SDL_BUTTON_LEFT) {
-                m_mouseButtonStates[LEFT] = false;
+            if (SDL_BUTTON_LEFT == event.button.button ) {
+                printf("Left Click Up\n");
             }
             if (event.button.button == SDL_BUTTON_MIDDLE) {
                 m_mouseButtonStates[MIDDLE] = false;
