@@ -44,10 +44,11 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	{
 		return false;
 	} 
-	m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 40, 40, "PlayerChar")));
+	GameObject* PlayerCharactor = new Player(new LoaderParams(100, 100, 40, 40, "PlayerChar"));
 	//m_gameObjects.push_back(new Enemy(new LoaderParams(0, 0, 50, 50, "Cursor")));
 	m_gameObjects.push_back(new Mouse(new LoaderParams(0, 0, 50, 50, "Crosshair")));
 	
+	m_gameObjects.push_back(PlayerCharactor);
 	SDL_ShowCursor(false);
 	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
 	return true;

@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "InputHandler.h"
+#include "Game.h"
 
 
 Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams) {}
@@ -7,6 +7,7 @@ Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams) {}
 
 void Player::draw()
 {
+    GameObject* Bullet = new Player(new LoaderParams(0, 0, 100, 100, "Crosshair"));
     SDLGameObject::draw(flip);
 }
 //대상상자X 좌표를 -1 씩 Update
@@ -70,10 +71,15 @@ void Player::handleInput()
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_S) && TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_A)) {
         State = DownWalk;
     }
-    if (TheInputHandler::Instance()->getMouseButtonState(RIGHT)){
-        
+    if (TheInputHandler::Instance()->getMouseButtonState(RIGHT)) {
+        GameObject* Bullet = new Player(new LoaderParams(0, 0, 100, 100, "Crosshair"));
+        m_gameObjects.push_back(Bullet);
         m_currentRow = 4; 
     }
+}
+
+void Player::fire() {
+    
 }
 
 

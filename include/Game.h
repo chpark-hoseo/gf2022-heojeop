@@ -5,9 +5,9 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Mouse.h"
-class Game {
 
-	
+
+class Game {
 
 public:
 	std::vector<GameObject*> m_gameObjects;
