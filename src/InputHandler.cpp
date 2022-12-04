@@ -24,8 +24,8 @@ void InputHandler::update()
             m_keystates = SDL_GetKeyboardState(0);
         }
         if (event.type == SDL_MOUSEMOTION) {
-            m_mousePosition->setX(event.motion.x);
-            m_mousePosition->setY(event.motion.y);
+            m_mousePosition->setX(event.motion.x - 25);
+            m_mousePosition->setY(event.motion.y - 25);
         }
         //if (SDL_MOUSEBUTTONDOWN == event.type) {
         //    if (SDL_BUTTON_RIGHT == event.button.button) {

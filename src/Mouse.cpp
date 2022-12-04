@@ -12,9 +12,6 @@ void Mouse::draw() {
 
 void Mouse::update(){
 
-	if (TheInputHandler::Instance()->getMouseButtonState(RIGHT)) {
-
-	}
 	Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
 	m_velocity = (*vec - m_position);
 	m_currentFrame = 0;
