@@ -15,6 +15,7 @@ public:
     virtual void clean();
     void a();
 
+    int PlayerPosition();
     
 private:
     int g;

@@ -3,10 +3,7 @@
 
 Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams) {}
 
-int g = 0;
-void Player::a(){
 
-}
 void Player::draw()
 {
     SDLGameObject::draw(flip);
@@ -17,9 +14,10 @@ void Player::update()
     handleInput();
     m_currentFrame = ((SDL_GetTicks() / 100) % 8);
     
+    PlayerPosition();
     //printf("Frame =  %d \n ", m_currentFrame);
-    int a = Player::m_position.getY();
-    printf("Position = %d\n", a);
+    //int a = Player::m_position.getY();
+    printf("Position = %d\n", PlayerPosition());
     printf("State = %d\n", cha);
     if (cha == idle || cha == guard ) {
         m_currentRow = idle;
@@ -63,6 +61,8 @@ void Player::update()
             }
         }
     }
+
+    
 
     SDLGameObject::update(); // ← 부모 클래스의 함수 호출 
     
@@ -202,6 +202,11 @@ void Player::handleInput()
         }
 
     }
+}
+
+int Player::PlayerPosition() {
+
+    return m_position.getX();
 }
 
 void Player::clean() {}
