@@ -1,7 +1,5 @@
 #include "Mouse.h"
 
-
-
 Mouse::Mouse(const LoaderParams* pParams) : SDLGameObject(pParams) {};
 
 void Mouse::draw() {

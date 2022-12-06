@@ -9,8 +9,12 @@ public:
 	virtual void update();
 	virtual void clean() {}
 	virtual ~SDLGameObject() {}
+	Vector2D& getPosition();
+	int getWidth(); 
+	int getHeight();
 
 protected:
+	
 	Vector2D m_acceleration;
 	Vector2D m_velocity;
 	Vector2D m_position;
@@ -18,6 +22,6 @@ protected:
 	int m_width;
 	int m_height;
 	int m_currentRow;
-	int m_currentFrame;
+	int m_currentFrame = 0;
 	std::string m_textureID;
 };

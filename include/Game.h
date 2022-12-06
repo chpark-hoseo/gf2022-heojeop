@@ -5,7 +5,12 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Mouse.h"
-
+#include "GameStateMachine.h"
+#include "Button.h"
+#include "GameState.h"
+#include "MenuState.h"
+#include "GamePlayState.h"
+#include "Title.h"
 
 class Game {
 
@@ -20,7 +25,9 @@ public:
 		return s_pInstance;
 	}
 
-	SDL_Renderer* getRenderer() const { return m_pRenderer; }
+	SDL_Renderer* getRenderer(){
+		return m_pRenderer;
+	}
 
 	bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
 	void render();
@@ -29,7 +36,7 @@ public:
 	void handleEvents();
 	void clean();
 	void quit() { m_bRunning = false; }
-
+	GameStateMachine* getStateMachine();
 private:
 
 	Game() {}
@@ -39,7 +46,9 @@ private:
 	//TextureManager m_textureManager;
  	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
+	GameStateMachine* m_pGameStateMachine;
 	bool m_bRunning;
+
 };
 
 

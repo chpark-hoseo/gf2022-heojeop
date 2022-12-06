@@ -14,7 +14,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 
 			if (m_pRenderer != 0) {
-				SDL_SetRenderDrawColor(m_pRenderer, 100, 100, 100, 255);
+				SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
 
 			}
 
@@ -30,27 +30,23 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	else {
 		return false; //SDL 초기화 실패
 	}
-
+	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
 
 
 	//surface 생성
-
-	if (!TheTextureManager::Instance()->load("Assets/CrossHair.png", "Crosshair", m_pRenderer))
+	if (!TheTextureManager::Instance()->load("Assets/CrossHair.png", "Cursor", TheGame::Instance()->getRenderer()))
 	{
+
 		return false;
 	}
 
-	if (!TheTextureManager::Instance()->load("Assets/CharactorSizeUp.png", "PlayerChar", m_pRenderer))
-	{
-		return false;
-	} 
-	GameObject* PlayerCharactor = new Player(new LoaderParams(100, 100, 40, 40, "PlayerChar"));
-	//m_gameObjects.push_back(new Enemy(new LoaderParams(0, 0, 50, 50, "Cursor")));
-	m_gameObjects.push_back(new Mouse(new LoaderParams(0, 0, 50, 50, "Crosshair")));
-	
-	m_gameObjects.push_back(PlayerCharactor);
+	GameObject* Cursor = new Mouse(new LoaderParams(0, 0, 50, 50,"Cursor"));
+
+	m_gameObjects.push_back(Cursor);
+	m_pGameStateMachine = new GameStateMachine();
+	m_pGameStateMachine->changeState(new MenuState()); 
 	SDL_ShowCursor(false);
-	m_bRunning = true; //true 로 변경 후 정상 실행중 전환
+	
 	return true;
 }
 
@@ -59,6 +55,9 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 void Game::update() {
 	//대상상자 위치 Update 
+	m_pGameStateMachine->update();
+
+
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		m_gameObjects[i]->update();
@@ -72,6 +71,7 @@ void Game::render() {
 
 	//백버퍼와 메인버퍼 사이에 랜더링 할 함수를 삽입 ) ****************** 중요 ********************
 	
+	m_pGameStateMachine->render();
 	for (int i = 0; i != m_gameObjects.size(); i++) {
 		m_gameObjects[i]->draw();
 	}
@@ -103,6 +103,10 @@ void Game::handleEvents() {
 			break;
 		}
 	}
+}
+
+GameStateMachine* Game::getStateMachine() {
+	return m_pGameStateMachine;
 }
 //window와 render 삭제후 완전종료
 void Game::clean() {

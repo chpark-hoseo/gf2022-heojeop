@@ -24,3 +24,15 @@ void SDLGameObject::update()
     m_velocity += m_acceleration;
     m_position += m_velocity;
 }
+
+Vector2D& SDLGameObject::getPosition() {
+    return m_position;
+}
+
+int SDLGameObject::getWidth() {
+    return m_width;
+}
+
+int SDLGameObject::getHeight() {
+    return m_height;
+}
