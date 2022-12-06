@@ -57,7 +57,6 @@ bool MenuState::onEnter()
     m_gameObjects.push_back(button1);
     m_gameObjects.push_back(button2);
 
-    //cout << "entering MenuState" << endl;
     return true;
 }
 
@@ -71,18 +70,16 @@ bool MenuState::onExit()
     TheTextureManager::Instance()->clearTextureMap("TItle");
     TheTextureManager::Instance()->clearTextureMap("PlayButton");
     TheTextureManager::Instance()->clearTextureMap("ExitButton"); 
-    //cout << "exiting MenuState" << endl;
+    
     return true;
 }
 
 void MenuState::s_menuToPlay()
 {
-    //cout << "Play button clicked" << endl; //Go to play GameState
     TheGame::Instance()->getStateMachine()->changeState(new PlayState());
 }
 
 void MenuState::s_exitFromMenu()
 {
-    TheGame::Instance()->quit(); //Exit game.
-    //cout << "Exit button clicked" << endl;
+    TheGame::Instance()->quit(); 
 }

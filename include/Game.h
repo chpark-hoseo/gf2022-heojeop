@@ -11,6 +11,7 @@
 #include "MenuState.h"
 #include "GamePlayState.h"
 #include "Title.h"
+#include "UnitClick.h"
 
 class Game {
 

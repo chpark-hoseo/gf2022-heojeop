@@ -62,11 +62,11 @@ bool PlayState::onEnter()
 
 bool PlayState::onExit()
 {
-    for (int i = 0; i < m_gameObjects.size(); i++) //clear all existing gameObjects
+    for (int i = 0; i < m_gameObjects.size(); i++) 
     {
         m_gameObjects[i]->clean();
     }
-    m_gameObjects.clear(); //clear vector
+    m_gameObjects.clear(); 
 
     //clean textures
     TheTextureManager::Instance()->clearTextureMap("Charactor");
@@ -87,20 +87,20 @@ bool PlayState::checkCollision(SDLGameObject* p1, SDLGameObject* p2)
     int topA, topB;
     int bottomA, bottomB;
 
-    //Calculate sides of rect b
+    
     leftA = p1->getPosition().getX();
     rightA = p1->getPosition().getX() + p1->getWidth();
     topA = p1->getPosition().getY();
     bottomA = p1->getPosition().getY() + p1->getHeight();
 
-    //Calculate sides of rect b
+    
     leftB = p2->getPosition().getX();
     rightB = p2->getPosition().getX() + p2->getWidth();
     topB = p2->getPosition().getY();
     bottomB = p2->getPosition().getY() + p2->getHeight();
 
-    //check collision
-    if (bottomA <= topB or topA >= bottomB or rightA <= leftB or leftA >= rightB) //no collision
+    
+    if (bottomA <= topB or topA >= bottomB or rightA <= leftB or leftA >= rightB) 
         return false;
     else
         return true;

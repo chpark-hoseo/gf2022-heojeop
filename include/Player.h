@@ -20,6 +20,8 @@ public:
     virtual void update();
     virtual void clean();
     void fire();
+    bool Clicked = false;
+    bool Clickable = false;
 
 private:
     enum PlayerState

@@ -39,7 +39,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 		return false;
 	}
-
+	
 	GameObject* Cursor = new Mouse(new LoaderParams(0, 0, 50, 50,"Cursor"));
 
 	m_gameObjects.push_back(Cursor);
@@ -49,8 +49,6 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	
 	return true;
 }
-
-
 
 
 void Game::update() {
