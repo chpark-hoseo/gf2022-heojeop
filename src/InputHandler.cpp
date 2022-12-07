@@ -53,8 +53,9 @@ void InputHandler::update()
         }
         else if (event.type == SDL_MOUSEBUTTONUP) {
             if (SDL_BUTTON_LEFT == event.button.button ) {
-                m_mouseButtonStates[LEFT] = false;
+                m_mouseButtonStates[LEFT] = true;
                 printf("Left Click Up\n");
+                m_mouseButtonStates[LEFT] = false;
             }
             if (event.button.button == SDL_BUTTON_MIDDLE) {
                 m_mouseButtonStates[MIDDLE] = false;

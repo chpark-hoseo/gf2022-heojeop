@@ -5,6 +5,7 @@
 class GameStateMachine 
 {
 public:
+
     GameStateMachine();
 
     void pushState(GameState* pState); 

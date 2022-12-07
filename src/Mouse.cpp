@@ -1,4 +1,5 @@
 #include "Mouse.h"
+#include "Player.h"
 
 Mouse::Mouse(const LoaderParams* pParams) : SDLGameObject(pParams) {};
 
@@ -14,4 +15,7 @@ void Mouse::update(){
 	m_velocity = (*vec - m_position);
 	m_currentFrame = 0;
 	SDLGameObject::update();
+
 }
+
+

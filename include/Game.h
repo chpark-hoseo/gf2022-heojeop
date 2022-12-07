@@ -7,11 +7,13 @@
 #include "Mouse.h"
 #include "GameStateMachine.h"
 #include "Button.h"
+#include "Pause.h"
 #include "GameState.h"
 #include "MenuState.h"
 #include "GamePlayState.h"
 #include "Title.h"
 #include "UnitClick.h"
+#include "Background.h"
 
 class Game {
 

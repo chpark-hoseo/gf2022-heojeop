@@ -142,6 +142,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Background.cpp" />
+    <ClCompile Include="src\Pause.cpp" />
     <ClCompile Include="src\Title.cpp" />
     <ClCompile Include="src\Button.cpp" />
     <ClCompile Include="src\Enemy.cpp" />
@@ -160,6 +162,8 @@
     <ClCompile Include="src\Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Background.h" />
+    <ClInclude Include="include\Pause.h" />
     <ClInclude Include="include\Title.h" />
     <ClInclude Include="include\Button.h" />
     <ClInclude Include="include\Enemy.h" />

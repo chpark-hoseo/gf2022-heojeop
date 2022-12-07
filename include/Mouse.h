@@ -9,6 +9,7 @@ public:
 	Mouse(const LoaderParams* pParams);
 	virtual void draw();
 	virtual void update();
+	bool CursorState();
 	//virtual void clean();
 
 };

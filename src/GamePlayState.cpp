@@ -16,7 +16,7 @@ void PlayState::update()
     //input behaviour
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
     {
-        //TheGame::Instance()->getStateMachine()->pushState(new PauseState());
+        TheGame::Instance()->getStateMachine()->pushState(new PauseState());
     }
 
     //update GameObjects
@@ -28,7 +28,7 @@ void PlayState::update()
     //Collision detection
     if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[0]), dynamic_cast<SDLGameObject*>(m_gameObjects[1])))
     {
-        //TheGame::Instance()->getStateMachine()->pushState(new GameOverState());
+        
     }
 }
 
@@ -46,15 +46,17 @@ bool PlayState::onEnter()
     {
         return false;
     }
-    if (!TheTextureManager::Instance()->load("Assets/Package.png", "Ghost", TheGame::Instance()->getRenderer()))
+    if (!TheTextureManager::Instance()->load("Assets/Background.png", "Background", TheGame::Instance()->getRenderer()))
     {
         return false;
     }
 
+    GameObject* BackgroundImage = new Background(new LoaderParams(-400, -250, 1280, 914, "Background"));
+
     GameObject* player = new Player(new LoaderParams(100, 100, 40, 40, "Charactor"));
-    GameObject* enemy = new Enemy(new LoaderParams(100, 100, 20, 20,"Ghost"));
+    m_gameObjects.push_back(BackgroundImage);
     m_gameObjects.push_back(player);
-    m_gameObjects.push_back(enemy);
+    
 
     std::cout << "Entering PlayState" << std::endl;
     return true;
