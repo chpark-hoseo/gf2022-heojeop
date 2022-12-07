@@ -1,7 +1,6 @@
 #include "GameStateMachine.h"
 #include <iostream>
 
-using namespace std;
 
 GameStateMachine::GameStateMachine()
 {

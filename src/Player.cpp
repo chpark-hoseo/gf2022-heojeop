@@ -20,14 +20,18 @@ void Player::update()
             printf("%d", vec);
         }
         //Vector2D* ClickPosition = TheInputHandler::Instance()->getMousePosition();
-
         break;
+    case idle:
+        m_currentRow = idle;
+        m_currentFrame = ((SDL_GetTicks() / 200) % 8);
+        m_velocity.setX(0);
+        m_velocity.setY(0);
     }
+
+    Clickabled();
 
     handleInput();
     SDLGameObject::update(); // ← 부모 클래스의 함수 호출 
-    m_currentRow = idle;
-    m_currentFrame = ((SDL_GetTicks() / 200) % 8);
 
     Clickabled();
 
@@ -42,12 +46,13 @@ void Player::handleInput()
     }
     if (TheInputHandler::Instance()->getMouseButtonState(LEFT) && !Clickabled()) {
         Clicked = false;
+        State = idle;
         printf("Charactor UnClicked ");
     }
     if (TheInputHandler::Instance()->getMouseButtonState(RIGHT) && Clicked == true) {
         vec = TheInputHandler::Instance()->getMousePosition();
         State = Move;
-        Clicked = false;
+        //Clicked = false;
     }
 
 }
@@ -61,6 +66,8 @@ bool Player::Clickabled() {
         return true;
     else
         return false;
+
+    printf("%d", Clickable);
 }
 
 

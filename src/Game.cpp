@@ -45,7 +45,7 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 	m_gameObjects.push_back(Cursor);
 	m_pGameStateMachine = new GameStateMachine();
 	m_pGameStateMachine->changeState(new MenuState()); 
-	SDL_ShowCursor(false);
+	//SDL_ShowCursor(false);
 	SDL_SetRelativeMouseMode(SDL_TRUE);
 	return true;
 }

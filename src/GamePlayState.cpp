@@ -54,6 +54,7 @@ bool PlayState::onEnter()
     GameObject* BackgroundImage = new Background(new LoaderParams(-400, -250, 1280, 914, "Background"));
 
     GameObject* player = new Player(new LoaderParams(100, 100, 40, 40, "Charactor"));
+
     m_gameObjects.push_back(BackgroundImage);
     m_gameObjects.push_back(player);
     
