@@ -13,7 +13,7 @@ class Player : public SDLGameObject
 public:
 
     std::vector<GameObject*> m_gameObjects;
-    
+    Vector2D *CurrentPosition();
     Player(const LoaderParams* pParams);
     void handleInput();
     virtual void draw();
@@ -24,6 +24,10 @@ public:
 
 private:
 
+    
+    void Jumping();
+    void Gravity();
+    int Ground = 500;
     enum PlayerState
     {
         idle,
@@ -31,7 +35,8 @@ private:
         Dash,
         Walk,
         Death,
-        DoubbleJump
+        DoubbleJump,
+        IsFalling
       
     };
 

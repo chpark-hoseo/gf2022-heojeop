@@ -13,22 +13,20 @@ PlayState::PlayState()
 
 void PlayState::update()
 {
-    //input behaviour
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_ESCAPE))
     {
         TheGame::Instance()->getStateMachine()->pushState(new PauseState());
     }
 
-    //update GameObjects
     for (int i = 0; i < m_gameObjects.size(); i++)
     {
         m_gameObjects[i]->update();
     }
 
-    //Collision detection
-    if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[0]), dynamic_cast<SDLGameObject*>(m_gameObjects[1])))
+    if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[1]), dynamic_cast<SDLGameObject*>(m_gameObjects[2])))
     {
-        
+        TheTextureManager::Instance()->clearTextureMap("FireBall");
+        //enemy->Destroyed();
     }
 }
 
@@ -50,18 +48,32 @@ bool PlayState::onEnter()
     {
         return false;
     }
+    if (!TheTextureManager::Instance()->load("Assets/FireBall.png", "FireBall", TheGame::Instance()->getRenderer()))
+    {
+        return false;
+    }
 
-    GameObject* BackgroundImage = new Background(new LoaderParams(-100, -400, 1920, 1080, "Background"));
+    GameObject* BackgroundImage = new Background(new LoaderParams(-400, -380, 1920, 1080, "Background"));
 
-    GameObject* player = new Player(new LoaderParams(100, 100, 40, 60, "Charactor"));
+    GameObject* player = new Player(new LoaderParams(200, 500, 40, 60, "Charactor"));
+
+    GameObject* FireBall = new Enemy(new LoaderParams(100, 500, 50, 50, "FireBall"));
 
     m_gameObjects.push_back(BackgroundImage);
     m_gameObjects.push_back(player);
-    
+    m_gameObjects.push_back(FireBall);
 
-    std::cout << "Entering PlayState" << std::endl;
     return true;
 }
+
+//bool PlayState::Destroyed() {
+//    return false;
+//}
+//
+//void PlayState::CreatFireBall() {
+//
+//
+//}
 
 bool PlayState::onExit()
 {
@@ -71,10 +83,11 @@ bool PlayState::onExit()
     }
     m_gameObjects.clear(); 
 
-    //clean textures
+    TheTextureManager::Instance()->clearTextureMap("Background");
     TheTextureManager::Instance()->clearTextureMap("Charactor");
+    TheTextureManager::Instance()->clearTextureMap("FireBall");
 
-    std::cout << "exiting PlayState " << std::endl;
+
     return true;
 }
 

@@ -24,8 +24,8 @@ void InputHandler::update()
             m_keystates = SDL_GetKeyboardState(0);
         }
         if (event.type == SDL_MOUSEMOTION) {
-            m_mousePosition->setX(event.motion.x - 25);
-            m_mousePosition->setY(event.motion.y - 25);
+            m_mousePosition->setX(event.motion.x );
+            m_mousePosition->setY(event.motion.y );
         }
         else if (event.type == SDL_MOUSEBUTTONDOWN) {
             if (SDL_BUTTON_LEFT == event.button.button ) {
@@ -67,6 +67,9 @@ bool InputHandler::isKeyDown(SDL_Scancode key)
     }
     return false;
 }
+
+
+
 
 bool InputHandler::getMouseButtonState(int buttonNumber)
 {

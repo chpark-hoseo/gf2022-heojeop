@@ -6,13 +6,23 @@ Enemy::Enemy(const LoaderParams* pParams) : SDLGameObject(pParams) {}
 
 void Enemy::draw()
 {
+    
     SDLGameObject::draw(flip);
 }
 
 void Enemy::update()
 {
 
-    m_currentFrame = ((SDL_GetTicks() / 100) % 6);
+    Vector2D* playerposition = player->CurrentPosition();
+    //printf("%d", &playerposition);
+    m_currentFrame = 0;
     SDLGameObject::update();
 }
+
+bool Enemy::Destroyed() {
+
+    return true;
+}
+
+
 void Enemy::clean() {}
