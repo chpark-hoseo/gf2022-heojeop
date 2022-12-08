@@ -27,17 +27,6 @@ void InputHandler::update()
             m_mousePosition->setX(event.motion.x - 25);
             m_mousePosition->setY(event.motion.y - 25);
         }
-        //if (SDL_MOUSEBUTTONDOWN == event.type) {
-        //    if (SDL_BUTTON_RIGHT == event.button.button) {
-        //        printf("Right Click\n");
-        //    }
-        //}
-        //if (SDL_MOUSEBUTTONUP == event.type) {
-        //    if (SDL_BUTTON_RIGHT == event.button.button) {
-        //        printf("Right Click up\n");
-        //    }
-        //}
-
         else if (event.type == SDL_MOUSEBUTTONDOWN) {
             if (SDL_BUTTON_LEFT == event.button.button ) {
                 m_mouseButtonStates[LEFT] = true;

@@ -14,61 +14,49 @@ void Player::update()
 {
     switch (State)
     {
-    case Move:
-        if (m_position.getX() != vec->getX()){
-            m_velocity = (*vec - m_position) / 100 ;
-            printf("%d", vec);
-        }
-        //Vector2D* ClickPosition = TheInputHandler::Instance()->getMousePosition();
+    case Player::idle:
+        
+        m_currentFrame = 
         break;
-    case idle:
-        m_currentRow = idle;
-        m_currentFrame = ((SDL_GetTicks() / 200) % 8);
-        m_velocity.setX(0);
-        m_velocity.setY(0);
+    case Player::Jump:
+        break;
+    case Player::Dash:
+        break;
+    case Player::Walk:
+        break;
+    case Player::Death:
+        break;
+    case Player::DoubbleJump:
+        break;
+    default:
+        break;
     }
-
-    Clickabled();
-
     handleInput();
     SDLGameObject::update(); // ← 부모 클래스의 함수 호출 
 
-    Clickabled();
 
 }
 
 void Player::handleInput()
 {
+    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT)) {
 
-    if (TheInputHandler::Instance()->getMouseButtonState(LEFT) && Clickabled()) {
-        Clicked = true;
-        printf("Charactor Clicked ");
     }
-    if (TheInputHandler::Instance()->getMouseButtonState(LEFT) && !Clickabled()) {
-        Clicked = false;
-        State = idle;
-        printf("Charactor UnClicked ");
-    }
-    if (TheInputHandler::Instance()->getMouseButtonState(RIGHT) && Clicked == true) {
-        vec = TheInputHandler::Instance()->getMousePosition();
-        State = Move;
-        //Clicked = false;
-    }
+    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT)) {
 
+    }
+    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
+
+    }
+    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT) && TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LSHIFT)) {
+
+    }
+    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT) && TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LSHIFT)) {
+
+    }
 }
 
 
-
-bool Player::Clickabled() {
-
-    Vector2D* pMousePos = TheInputHandler::Instance()->getMousePosition();
-    if (bool Clickable = pMousePos->getX() < (m_position.getX() + m_width) and pMousePos->getX() > m_position.getX() and pMousePos->getY() < (m_position.getY() + m_height) and pMousePos->getY() > m_position.getY() == 1)
-        return true;
-    else
-        return false;
-
-    printf("%d", Clickable);
-}
 
 
 void Player::clean() {}

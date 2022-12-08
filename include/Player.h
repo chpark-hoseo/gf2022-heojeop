@@ -19,23 +19,19 @@ public:
     virtual void draw();
     virtual void update();
     virtual void clean();
-    bool Clickabled();
+
 
 
 private:
-    Vector2D *vec;
-    bool Clicked = false;
-    bool Clickable = false;
+
     enum PlayerState
     {
         idle,
-        UpSideWalk,
-        DownWalk,
-        DownRolling,
-        DownSideRolling,
-        UpRolling,
-        UpSideRolling,
-        Move
+        Jump,
+        Dash,
+        Walk,
+        Death,
+        DoubbleJump
       
     };
 

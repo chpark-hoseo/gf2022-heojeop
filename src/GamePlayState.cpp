@@ -42,18 +42,18 @@ void PlayState::render()
 
 bool PlayState::onEnter()
 {
-    if (!TheTextureManager::Instance()->load("Assets/CharactorSizeUp.png", "Charactor", TheGame::Instance()->getRenderer())) 
+    if (!TheTextureManager::Instance()->load("Assets/CharactorSprite.png", "Charactor", TheGame::Instance()->getRenderer())) 
     {
         return false;
     }
-    if (!TheTextureManager::Instance()->load("Assets/Background.png", "Background", TheGame::Instance()->getRenderer()))
+    if (!TheTextureManager::Instance()->load("Assets/Backgroundimg.png", "Background", TheGame::Instance()->getRenderer()))
     {
         return false;
     }
 
-    GameObject* BackgroundImage = new Background(new LoaderParams(-400, -250, 1280, 914, "Background"));
+    GameObject* BackgroundImage = new Background(new LoaderParams(-100, -400, 1920, 1080, "Background"));
 
-    GameObject* player = new Player(new LoaderParams(100, 100, 40, 40, "Charactor"));
+    GameObject* player = new Player(new LoaderParams(100, 100, 40, 60, "Charactor"));
 
     m_gameObjects.push_back(BackgroundImage);
     m_gameObjects.push_back(player);
