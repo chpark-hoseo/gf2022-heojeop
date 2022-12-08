@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Background.cpp" />
+    <ClCompile Include="src\GameOver.cpp" />
     <ClCompile Include="src\Pause.cpp" />
     <ClCompile Include="src\Title.cpp" />
     <ClCompile Include="src\Button.cpp" />
@@ -163,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Background.h" />
+    <ClInclude Include="include\GameOver.h" />
     <ClInclude Include="include\Pause.h" />
     <ClInclude Include="include\Title.h" />
     <ClInclude Include="include\Button.h" />

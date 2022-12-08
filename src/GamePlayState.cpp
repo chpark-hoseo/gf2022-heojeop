@@ -2,7 +2,9 @@
 #include "TextureManager.h"
 #include "Game.h"
 #include "InputHandler.h"
+#include "GameOver.h"
 #include <iostream>
+
 
 const std::string PlayState::s_playID = "PLAY";
 
@@ -25,8 +27,8 @@ void PlayState::update()
 
     if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[1]), dynamic_cast<SDLGameObject*>(m_gameObjects[2])))
     {
-        TheTextureManager::Instance()->clearTextureMap("FireBall");
-        //enemy->Destroyed();
+        
+        TheGame::Instance()->getStateMachine()->pushState(new GameOverState());
     }
 }
 
@@ -58,6 +60,7 @@ bool PlayState::onEnter()
     GameObject* player = new Player(new LoaderParams(200, 500, 40, 60, "Charactor"));
 
     GameObject* FireBall = new Enemy(new LoaderParams(100, 500, 50, 50, "FireBall"));
+    
 
     m_gameObjects.push_back(BackgroundImage);
     m_gameObjects.push_back(player);
@@ -66,14 +69,7 @@ bool PlayState::onEnter()
     return true;
 }
 
-//bool PlayState::Destroyed() {
-//    return false;
-//}
-//
-//void PlayState::CreatFireBall() {
-//
-//
-//}
+
 
 bool PlayState::onExit()
 {

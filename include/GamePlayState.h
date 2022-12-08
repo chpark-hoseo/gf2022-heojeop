@@ -14,16 +14,14 @@ public:
     virtual void render();
     virtual bool onEnter();
     virtual bool onExit();
-    //void CreatFireBall();
-    //bool Destroyed();
     virtual std::string getStateID() const;
+
 protected:
+
 private:
 
-    //Enemy* enemy;
+    Enemy* enemy;
     bool checkCollision(SDLGameObject* p1, SDLGameObject* p2);
-
-   
     static const std::string s_playID; 
     std::vector<GameObject*> m_gameObjects; 
 };

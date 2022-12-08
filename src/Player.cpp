@@ -135,6 +135,10 @@ Vector2D* Player::CurrentPosition() {
     return &m_position;
 }
 
+int Player::PlayerPo() {
+    return m_position.getX();
+}
+
 
 
 void Player::clean() {}

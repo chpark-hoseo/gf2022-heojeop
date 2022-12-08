@@ -1,6 +1,5 @@
 #include "Enemy.h"
 
-
 Enemy::Enemy(const LoaderParams* pParams) : SDLGameObject(pParams) {}
 
 
@@ -12,15 +11,14 @@ void Enemy::draw()
 
 void Enemy::update()
 {
-
     Vector2D* playerposition = player->CurrentPosition();
-    //printf("%d", &playerposition);
+    //m_velocity = *playerposition;
     m_currentFrame = 0;
     SDLGameObject::update();
 }
 
 bool Enemy::Destroyed() {
-
+    printf(" Destroyed !!");
     return true;
 }
 
