@@ -11,7 +11,9 @@ void Enemy::draw()
 
 void Enemy::update()
 {
-    Vector2D* playerposition = player->CurrentPosition();
+    //player->GetPlayerYPosition();
+
+    //printf("%d", playerposition);
     //m_velocity = *playerposition;
     m_currentFrame = 0;
     SDLGameObject::update();

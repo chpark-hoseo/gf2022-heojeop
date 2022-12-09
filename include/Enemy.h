@@ -19,5 +19,5 @@ private:
 
     //PlayState* playstate;
     Vector2D* ps();
-    Player* player = nullptr;
+    Player* player;
 };

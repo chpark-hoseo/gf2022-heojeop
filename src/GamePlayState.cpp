@@ -27,7 +27,8 @@ void PlayState::update()
 
     if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[1]), dynamic_cast<SDLGameObject*>(m_gameObjects[2])))
     {
-        
+        //TheTextureManager::Instance()->clearTextureMap("FireBall");
+        player->PlayerDeath();
         TheGame::Instance()->getStateMachine()->pushState(new GameOverState());
     }
 }
@@ -61,7 +62,8 @@ bool PlayState::onEnter()
 
     GameObject* FireBall = new Enemy(new LoaderParams(100, 500, 50, 50, "FireBall"));
     
-
+   
+    
     m_gameObjects.push_back(BackgroundImage);
     m_gameObjects.push_back(player);
     m_gameObjects.push_back(FireBall);
@@ -86,6 +88,7 @@ bool PlayState::onExit()
 
     return true;
 }
+
 
 std::string PlayState::getStateID() const
 {

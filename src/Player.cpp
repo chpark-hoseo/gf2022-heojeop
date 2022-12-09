@@ -13,49 +13,54 @@ void Player::draw()
 void Player::update()
 {
 
+    if (IsAlive == true) {
+        m_currentFrame = ((SDL_GetTicks() / 100) % 8);
 
-    m_currentFrame = ((SDL_GetTicks() / 100) % 8);
-    
-    //Gravity();
-    switch (State)
-    {
-    case Player::idle:
+        //Gravity();
+        switch (State)
+        {
+        case Player::idle:
 
-        m_currentRow = idle;
-        Gravity();
-        break;
-    case Player::Jump:
-        m_currentRow = Jump;
-        Jumping();
-        break;
-    case Player::Dash:
-        m_currentRow = Dash;
-        break;
-    case Player::Walk:
+            m_currentRow = idle;
+            Gravity();
+            break;
+        case Player::Jump:
+            m_currentRow = Jump;
+            Jumping();
+            break;
+        case Player::Dash:
+            m_currentRow = Dash;
+            break;
+        case Player::Walk:
 
-        m_currentRow = Walk;
+            m_currentRow = Walk;
 
-        break;
-    case Player::Death:
-        break;
-    case Player::DoubbleJump:
-        break;
-    default:
-        break;
-    case Player::IsFalling:
-        Gravity();
-        if (m_position.getY() == Ground) {
-            State = idle;
+            break;
+        case Player::Death:
+
+            break;
+        case Player::DoubbleJump:
+            break;
+        default:
+            break;
+        case Player::IsFalling:
+
+            Gravity();
+            if (m_position.getY() == Ground) {
+                State = idle;
+            }
+            break;
         }
-        break;
+
+        m_velocity.setX(0);
+        m_velocity.setY(0);
+        m_acceleration.setX(0);
+        handleInput();
+        SDLGameObject::update(); // ← 부모 클래스의 함수 호출 
+
     }
 
-    m_velocity.setX(0);
-    m_velocity.setY(0);
-    m_acceleration.setX(0);
-    handleInput();
-    SDLGameObject::update(); // ← 부모 클래스의 함수 호출 
-
+    
 
 }
 
@@ -85,7 +90,7 @@ void Player::handleInput()
         State = idle;
 
     }
-    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
+    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_UP)) {
 
         if (State == IsFalling) {
             return;
@@ -94,8 +99,10 @@ void Player::handleInput()
             State = Jump;
         }
 
-        
+    }
+    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
 
+        
     }
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LEFT) && TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LSHIFT)) {
         if (State != Jump || State != IsFalling) {
@@ -105,7 +112,7 @@ void Player::handleInput()
         }
     }
     if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT) && TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_LSHIFT)) {
-        if (State == Walk  ) {
+        if (State != Jump || State != IsFalling) {
             m_acceleration.setX(3);
             //m_velocity.setX(3);
             State = Dash;
@@ -130,13 +137,14 @@ void Player::Jumping() {
     }
 }
 
-Vector2D* Player::CurrentPosition() {
+int Player::GetPlayerYPosition() {
 
-    return &m_position;
+    return m_position.getX();
 }
 
-int Player::PlayerPo() {
-    return m_position.getX();
+void Player::PlayerDeath() {
+
+    
 }
 
 

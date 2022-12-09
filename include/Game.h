@@ -40,6 +40,7 @@ public:
 	void clean();
 	void quit() { m_bRunning = false; }
 	GameStateMachine* getStateMachine();
+	
 private:
 
 	Game() {}

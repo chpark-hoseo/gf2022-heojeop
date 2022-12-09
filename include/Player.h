@@ -13,15 +13,15 @@ class Player : public SDLGameObject
 public:
 
     std::vector<GameObject*> m_gameObjects;
-    Vector2D *CurrentPosition();
+    int GetPlayerYPosition();
     Player(const LoaderParams* pParams);
     void handleInput();
     virtual void draw();
     virtual void update();
     virtual void clean();
-    int PlayerPo();
-
-
+    
+    void PlayerDeath();
+    bool IsAlive = true;
 
 private:
 
