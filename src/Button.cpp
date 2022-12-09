@@ -8,7 +8,7 @@ MenuButton::MenuButton(const LoaderParams* pParams, void (*callback)()) : SDLGam
 
 void MenuButton::draw()
 {
-    SDLGameObject::draw(flip);
+    SDLGameObject::draw(flip, angle);
 }
 
 void MenuButton::update()

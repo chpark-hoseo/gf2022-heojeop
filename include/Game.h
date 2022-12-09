@@ -14,6 +14,7 @@
 #include "Title.h"
 #include "UnitClick.h"
 #include "Background.h"
+#include "Bullet.h"
 
 class Game {
 

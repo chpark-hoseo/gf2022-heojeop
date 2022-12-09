@@ -10,7 +10,7 @@ const std::string PlayState::s_playID = "PLAY";
 
 PlayState::PlayState()
 {
-    //ctor
+
 }
 
 void PlayState::update()
@@ -25,11 +25,10 @@ void PlayState::update()
         m_gameObjects[i]->update();
     }
 
-    if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[1]), dynamic_cast<SDLGameObject*>(m_gameObjects[2])))
+    if (checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[2]), dynamic_cast<SDLGameObject*>(m_gameObjects[3])))
     {
-        //TheTextureManager::Instance()->clearTextureMap("FireBall");
-        player->PlayerDeath();
-        TheGame::Instance()->getStateMachine()->pushState(new GameOverState());
+        m_gameObjects[2]->clean();
+        //TheGame::Instance()->getStateMachine()->pushState(new GameOverState());
     }
 }
 
@@ -43,7 +42,7 @@ void PlayState::render()
 
 bool PlayState::onEnter()
 {
-    if (!TheTextureManager::Instance()->load("Assets/CharactorSprite.png", "Charactor", TheGame::Instance()->getRenderer())) 
+    if (!TheTextureManager::Instance()->load("Assets/GPlayer.png", "Charactor", TheGame::Instance()->getRenderer())) 
     {
         return false;
     }
@@ -51,22 +50,27 @@ bool PlayState::onEnter()
     {
         return false;
     }
-    if (!TheTextureManager::Instance()->load("Assets/FireBall.png", "FireBall", TheGame::Instance()->getRenderer()))
+    if (!TheTextureManager::Instance()->load("Assets/EnemyWalk.png", "Enemy", TheGame::Instance()->getRenderer()))
+    {
+        return false;
+    }
+    if (!TheTextureManager::Instance()->load("Assets/Bullet.png", "Bullet", TheGame::Instance()->getRenderer()))
     {
         return false;
     }
 
-    GameObject* BackgroundImage = new Background(new LoaderParams(-400, -380, 1920, 1080, "Background"));
+    GameObject* BackgroundImage = new Background(new LoaderParams(0, 0, 480, 640, "Background"));
 
-    GameObject* player = new Player(new LoaderParams(200, 500, 40, 60, "Charactor"));
+    GameObject* player = new Player(new LoaderParams(200, 500, 70, 114, "Charactor"));
 
-    GameObject* FireBall = new Enemy(new LoaderParams(100, 500, 50, 50, "FireBall"));
+    GameObject* enemy = new Enemy(new LoaderParams(200, 0, 50, 68, "Enemy"));
     
-   
-    
+    GameObject* bullet = new Bullet(new LoaderParams(200, 500, 20, 20, "Bullet"));
+
     m_gameObjects.push_back(BackgroundImage);
+    m_gameObjects.push_back(enemy);
+    m_gameObjects.push_back(bullet);
     m_gameObjects.push_back(player);
-    m_gameObjects.push_back(FireBall);
 
     return true;
 }
@@ -79,14 +83,20 @@ bool PlayState::onExit()
     {
         m_gameObjects[i]->clean();
     }
+
     m_gameObjects.clear(); 
 
     TheTextureManager::Instance()->clearTextureMap("Background");
     TheTextureManager::Instance()->clearTextureMap("Charactor");
-    TheTextureManager::Instance()->clearTextureMap("FireBall");
-
+    TheTextureManager::Instance()->clearTextureMap("Bullet");
+    TheTextureManager::Instance()->clearTextureMap("Enemy");
 
     return true;
+}
+
+void PlayState::fire() {
+    printf("true");
+    fired = true;
 }
 
 

@@ -65,6 +65,8 @@ void Game::update() {
 
 
 void Game::render() {
+
+
 	SDL_RenderClear(m_pRenderer); //백버퍼 그리기
 
 	//백버퍼와 메인버퍼 사이에 랜더링 할 함수를 삽입 ) ****************** 중요 ********************

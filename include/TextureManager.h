@@ -16,10 +16,10 @@ public:
 	bool load(std::string fileName, std::string id, SDL_Renderer* pRenderer);
 
 	//draw(그리고 싶은 텍스쳐 별명(id) , 화면의 위치 , 텍스쳐 크기 , 랜더러 , 이미지 옵션)
-	void draw(std::string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void draw(std::string id, int x, int y, int width, int height,  SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
 	//drawFrame(그리고 싶은 텍스쳐 별명(id) , 화면의 위치 , 텍스쳐 크기,시트의 행(row) , 나타낼 프레임 , 랜더러 , 이미지 옵션)
-	void drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, int angle ,SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
 	//clearTextureMap ( TextureMap 지우기 )
 	void clearTextureMap(std::string id);

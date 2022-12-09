@@ -7,7 +7,7 @@ UnitClick::UnitClick(const LoaderParams* pParams) : SDLGameObject(pParams) {
 
 void UnitClick::draw() {
 
-	SDLGameObject::draw(flip);
+	SDLGameObject::draw(flip, angle);
 }
 
 void UnitClick::update() {

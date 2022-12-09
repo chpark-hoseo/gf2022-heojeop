@@ -1,11 +1,10 @@
 #include "Mouse.h"
-#include "Player.h"
 
 Mouse::Mouse(const LoaderParams* pParams) : SDLGameObject(pParams) {};
 
 void Mouse::draw() {
 
-	SDLGameObject::draw(flip);
+	SDLGameObject::draw(flip, angle);
 }
 
 

@@ -1,7 +1,9 @@
 ﻿#pragma once
 #include "SDLGameObject.h"
 #include "InputHandler.h"
+#include "GamePlayState.h"
 #include <vector>
+class Background;
 
 //SDL 을 상속받도록 수정
 
@@ -13,22 +15,17 @@ class Player : public SDLGameObject
 public:
 
     std::vector<GameObject*> m_gameObjects;
-    int GetPlayerYPosition();
     Player(const LoaderParams* pParams);
     void handleInput();
     virtual void draw();
     virtual void update();
     virtual void clean();
-    
     void PlayerDeath();
-    bool IsAlive = true;
-
+    int a;
 private:
 
-    
-    void Jumping();
-    void Gravity();
-    int Ground = 500;
+    PlayState* playstate;
+    InputHandler* inputHandler;
     enum PlayerState
     {
         idle,

@@ -5,7 +5,6 @@
 #include "GameObject.h"
 #include "SDLGameObject.h"
 #include "Enemy.h"
-#include "Player.h"
 
 class PlayState : public GameState
 {
@@ -15,13 +14,15 @@ public:
     virtual void render();
     virtual bool onEnter();
     virtual bool onExit();
+    bool fired = false;
+    void fire();
     virtual std::string getStateID() const;
 
 protected:
 
 private:
-
-    Player* player;
+    
+    
     Enemy* enemy;
     bool checkCollision(SDLGameObject* p1, SDLGameObject* p2);
     static const std::string s_playID; 

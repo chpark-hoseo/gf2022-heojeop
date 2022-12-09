@@ -4,7 +4,7 @@ Title::Title(const LoaderParams* pParams) : SDLGameObject(pParams) {}
 
 void Title::draw() {
 	m_currentFrame = 0;
-	SDLGameObject::draw(flip);
+	SDLGameObject::draw(flip, angle);
 
 }
 

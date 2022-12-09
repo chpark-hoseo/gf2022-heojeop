@@ -12,11 +12,11 @@ SDLGameObject::SDLGameObject(const LoaderParams* pParams) :GameObject(pParams), 
 
 }
 
-void SDLGameObject::draw(SDL_RendererFlip flip) {
+void SDLGameObject::draw(SDL_RendererFlip flip, int angle) {
     TextureManager::Instance()->drawFrame(m_textureID,
         (int)m_position.getX(), (int)m_position.getY(),
-        m_width, m_height, m_currentRow, m_currentFrame,
-        TheGame::Instance()->getRenderer(), flip);
+        m_width, m_height, m_currentRow, m_currentFrame, angle,
+        TheGame::Instance()->getRenderer());
 }
 
 void SDLGameObject::update()

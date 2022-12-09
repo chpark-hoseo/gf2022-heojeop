@@ -6,7 +6,7 @@ Background::Background(const LoaderParams* pParams) : SDLGameObject(pParams) {
 }
 
 void Background::draw() {
-	SDLGameObject::draw(flip);
+	SDLGameObject::draw(flip, angle);
 }
 
 void Background::update() {
@@ -17,7 +17,7 @@ void Background::update() {
 }
 
 void Background::MoveChar() {
-	
+
 
 }
 
