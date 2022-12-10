@@ -142,6 +142,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameClear.cpp" />
     <ClCompile Include="src\Background.cpp" />
     <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\GameOver.cpp" />
@@ -166,6 +167,7 @@
   <ItemGroup>
     <ClInclude Include="include\Background.h" />
     <ClInclude Include="include\Bullet.h" />
+    <ClInclude Include="include\GameClear.h" />
     <ClInclude Include="include\GameOver.h" />
     <ClInclude Include="include\Pause.h" />
     <ClInclude Include="include\Title.h" />

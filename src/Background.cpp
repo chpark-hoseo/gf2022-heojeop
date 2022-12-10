@@ -2,7 +2,7 @@
 
 Background::Background(const LoaderParams* pParams) : SDLGameObject(pParams) {
 
-		int CurrentPosition = m_position.getX();
+
 }
 
 void Background::draw() {

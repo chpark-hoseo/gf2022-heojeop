@@ -8,11 +8,21 @@ class Enemy : public SDLGameObject
 {
 public:
     
-    bool Destroyed();
+    
     Enemy(const LoaderParams* pParams);
     virtual void draw();
     virtual void update();
     virtual void clean();
-private:
 
+    int getXPos();
+    int getYPos();
+private:
+    enum EnemyState
+    {
+        Chase,
+        Death
+
+    };
+    
+    EnemyState enemystate = Chase;
 };

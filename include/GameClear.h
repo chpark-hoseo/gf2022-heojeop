@@ -5,10 +5,10 @@
 
 using namespace std;
 
-class GameOverState : public GameState
+class GameClear : public GameState
 {
 public:
-    GameOverState();
+    GameClear();
 
     virtual void update();
     virtual void render();
@@ -16,17 +16,17 @@ public:
     virtual bool onEnter();
     virtual bool onExit();
 
-  
+
     virtual string getStateID() const;
 
 protected:
 private:
 
-    
-    static void s_gameOverToMain(); 
-    static void s_restartPlay(); 
 
-    static const string s_gameOverID; 
+    static void s_gameOverToMain();
+    static void s_restartPlay();
 
-    vector<GameObject*> m_gameObjects; 
+    static const string s_gameOverID;
+
+    vector<GameObject*> m_gameObjects;
 };

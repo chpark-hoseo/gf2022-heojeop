@@ -39,13 +39,14 @@ bool Game::init(const char* title, int xpos, int ypos, int height, int width, in
 
 		return false;
 	}
+
 	
-	GameObject* Cursor = new Mouse(new LoaderParams(0, 0, 50, 50,"Cursor"));
+	
+	GameObject* Cursor = new Mouse(new LoaderParams(0, 0, 30, 30,"Cursor"));
 
 	m_gameObjects.push_back(Cursor);
 	m_pGameStateMachine = new GameStateMachine();
 	m_pGameStateMachine->changeState(new MenuState()); 
-	//SDL_ShowCursor(false);
 	SDL_SetRelativeMouseMode(SDL_TRUE);
 	return true;
 }

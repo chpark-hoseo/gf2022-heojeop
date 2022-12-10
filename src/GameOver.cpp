@@ -25,6 +25,12 @@ void GameOverState::update()
     {
         m_gameObjects[i]->update();
     }
+
+    if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_SPACE)) {
+
+        s_restartPlay();
+
+    }
 }
 
 void GameOverState::render()
@@ -37,27 +43,18 @@ void GameOverState::render()
 
 bool GameOverState::onEnter()
 {
-    if (!TheTextureManager::Instance()->load("Assets/GameOverTitle.png", "GameOverTitle", TheGame::Instance()->getRenderer()))
+    if (!TheTextureManager::Instance()->load("Assets/Re.png", "Retry", TheGame::Instance()->getRenderer()))
     {
         return false; 
     }
-    if (!TheTextureManager::Instance()->load("Assets/EscapeButton.png", "ExitButton", TheGame::Instance()->getRenderer()))
-    {
-        return false; 
-    }
-    if (!TheTextureManager::Instance()->load("Assets/BlinkButton.png", "BlinkButton", TheGame::Instance()->getRenderer()))
-    {
-        return false;
-    }
+
 
     
-    GameObject* title = new Title(new LoaderParams(50, 50, 400, 150, "GameOverTitle"));
-    GameObject* button1 = new MenuButton(new LoaderParams(130, 350, 100, 100, "ExitButton"), s_gameOverToMain);
-    GameObject* button2 = new MenuButton(new LoaderParams(280, 350, 100, 100, "BlinkButton"), s_restartPlay);
+    GameObject* title = new Title(new LoaderParams(0, 0, 1024, 540, "Retry"));
+
 
     m_gameObjects.push_back(title);
-    m_gameObjects.push_back(button1);
-    m_gameObjects.push_back(button2);
+
 
     
     return true;
@@ -70,9 +67,8 @@ bool GameOverState::onExit()
         m_gameObjects[i]->clean();
     }
     m_gameObjects.clear();
-    TheTextureManager::Instance()->clearTextureMap("GameOverTitle");
-    TheTextureManager::Instance()->clearTextureMap("ExitButton");
-    TheTextureManager::Instance()->clearTextureMap("BlinkButton");
+    TheTextureManager::Instance()->clearTextureMap("Retry");
+
 
     
     return true;

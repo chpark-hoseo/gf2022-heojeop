@@ -14,5 +14,5 @@ private:
 
     int CurrentPosition;
     void MoveChar();
-    Player* player;
+    Player *player;
 };

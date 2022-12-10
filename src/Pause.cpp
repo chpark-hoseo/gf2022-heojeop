@@ -58,9 +58,9 @@ bool PauseState::onEnter()
     }
 
 
-    GameObject* button1 = new MenuButton(new LoaderParams(130, 250, 220, 100, "Option"), s_Option);
-    GameObject* button2 = new MenuButton(new LoaderParams(130, 400, 220, 100, "Save"), s_Save);
-    GameObject* button3 = new MenuButton(new LoaderParams(380, 0, 100, 100, "Escape"), s_pauseToMain);
+    GameObject* button1 = new MenuButton(new LoaderParams(300, 350, 220, 100, "Option"), s_Option);
+    GameObject* button2 = new MenuButton(new LoaderParams(524, 350, 220, 100, "Save"), s_Save);
+    GameObject* button3 = new MenuButton(new LoaderParams(924, 0, 100, 100, "Escape"), s_pauseToMain);
     GameObject* button4 = new MenuButton(new LoaderParams(0, 0, 100, 100, "Blink"), s_resumePlay);
 
     m_gameObjects.push_back(button1);

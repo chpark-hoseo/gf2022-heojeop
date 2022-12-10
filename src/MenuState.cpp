@@ -49,9 +49,9 @@ bool MenuState::onEnter()
         return false;
     }
     
-    GameObject* button1 = new MenuButton(new LoaderParams(150, 350, 200, 100, "PlayButton"), s_menuToPlay);
-    GameObject* button2 = new MenuButton(new LoaderParams(150, 500, 200, 100, "ExitButton"), s_exitFromMenu);
-    GameObject* TitleBox = new Title(new LoaderParams(40, 80, 400, 150, "Title"));
+    GameObject* button1 = new MenuButton(new LoaderParams(300, 350, 200, 100, "PlayButton"), s_menuToPlay);
+    GameObject* button2 = new MenuButton(new LoaderParams(524, 350, 200, 100, "ExitButton"), s_exitFromMenu);
+    GameObject* TitleBox = new Title(new LoaderParams(300, 80, 400, 150, "Title"));
 
     m_gameObjects.push_back(TitleBox);
     m_gameObjects.push_back(button1);
